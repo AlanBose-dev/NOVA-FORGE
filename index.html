@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Icons (FontAwesome CDN) -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
@@ -25,8 +26,8 @@
       --primary-gradient: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 100%);
       --accent-glow: #2dd4bf;
       --secondary-glow: #22d3ee;
-      --glass-bg: rgba(30, 41, 59, 0.4);
-      --glass-border: rgba(45, 212, 191, 0.15);
+      --glass-bg: rgba(30, 41, 59, 0.3);
+      --glass-border: rgba(45, 212, 191, 0.2);
       --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
       --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
@@ -52,30 +53,22 @@
       background-attachment: fixed;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
 
     /* --- UTILITIES --- */
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
+    .text-center { text-align: center; }
+    .flex-center { display: flex; justify-content: center; align-items: center; }
+
     .section-title {
       font-size: 2.5rem;
-      text-align: center;
       margin-bottom: 1rem;
       background: var(--primary-gradient);
       -webkit-background-clip: text;
@@ -84,22 +77,37 @@
       font-weight: 800;
       letter-spacing: -1px;
       text-transform: uppercase;
+      display: inline-block;
     }
 
     .section-subtitle {
-      text-align: center;
       color: var(--text-muted);
       margin-bottom: 4rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.1rem;
+    }
+
+    /* --- GLASS CARD COMPONENT --- */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: 16px;
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      border-color: var(--accent-glow);
+      box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
+      transform: translateY(-5px);
     }
 
     /* --- BUTTONS --- */
     .btn {
       display: inline-block;
       padding: 0.9rem 2.2rem;
-      border-radius: 4px;
+      border-radius: 50px;
       font-weight: 700;
       transition: var(--transition);
       cursor: pointer;
@@ -107,29 +115,24 @@
       text-transform: uppercase;
       font-size: 0.85rem;
       letter-spacing: 1.5px;
-      position: relative;
-      white-space: nowrap;
     }
 
     .btn-primary {
       background: var(--text-main);
       color: var(--bg-color);
-      box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
+      position: relative;
       z-index: 1;
+      overflow: hidden;
     }
 
     .btn-primary::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: var(--primary-gradient);
       z-index: -1;
       transition: opacity 0.3s ease;
       opacity: 0;
-      border-radius: 4px;
     }
 
     .btn-primary:hover {
@@ -137,14 +140,12 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3);
     }
-
-    .btn-primary:hover::before {
-      opacity: 1;
-    }
+    
+    .btn-primary:hover::before { opacity: 1; }
 
     .btn-outline {
       background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.3);
       color: var(--text-main);
     }
 
@@ -153,33 +154,16 @@
       background: rgba(45, 212, 191, 0.1);
     }
 
-    /* --- GLASS CARD --- */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-    }
-
     /* --- NAVBAR --- */
     .navbar {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      padding: 1.5rem 0;
+      padding: 1.2rem 0;
       z-index: 1000;
-      transition: var(--transition);
-      background: rgba(14, 17, 22, 0.8);
-      backdrop-filter: blur(5px);
-    }
-
-    .navbar.scrolled {
-      background: rgba(14, 17, 22, 0.98);
-      backdrop-filter: blur(20px);
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(14, 17, 22, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .nav-container {
@@ -196,14 +180,9 @@
       text-transform: uppercase;
     }
 
-    .logo span {
-      color: var(--accent-glow);
-    }
+    .logo span { color: var(--accent-glow); }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-    }
+    .nav-links { display: flex; gap: 2.5rem; }
 
     .nav-link {
       font-size: 0.9rem;
@@ -212,20 +191,11 @@
       transition: var(--transition);
       text-transform: uppercase;
       letter-spacing: 1px;
-      position: relative;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      color: #fff;
-    }
+    .nav-link:hover, .nav-link.active { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
 
-    .menu-btn {
-      display: none;
-      font-size: 1.5rem;
-      color: var(--text-main);
-      cursor: pointer;
-    }
+    .menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
 
     /* --- HERO SECTION --- */
     .hero {
@@ -237,16 +207,21 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
+    .hero-blob {
       position: absolute;
-      top: -10%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
       filter: blur(80px);
       z-index: -1;
+      opacity: 0.4;
+      animation: float 10s infinite alternate;
+    }
+
+    .blob-1 { width: 400px; height: 400px; background: var(--accent-glow); top: -50px; left: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--secondary-glow); bottom: 50px; right: -50px; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(30px, 50px); }
     }
 
     .hero-container {
@@ -255,16 +230,12 @@
       gap: 2rem;
       align-items: center;
       width: 100%;
-      max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    .hero-content {
-      text-align: left;
-      z-index: 2;
-    }
-
+    .hero-content { text-align: left; z-index: 2; }
+    
     .hero-greeting {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -275,12 +246,11 @@
       font-weight: 600;
       font-size: 0.9rem;
       margin-bottom: 1rem;
-      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 4rem;
       line-height: 1.1;
       margin-bottom: 1rem;
       font-weight: 800;
@@ -292,6 +262,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      position: relative;
     }
 
     .services-wrapper {
@@ -300,27 +271,21 @@
       margin-bottom: 1.5rem;
       font-size: 1.2rem;
       color: var(--text-muted);
-      flex-wrap: wrap;
     }
 
     .highlight-txt {
       font-weight: 700;
       margin-left: 8px;
       color: #ffd700 !important;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 
-    .hero-socials {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      justify-content: flex-start;
-    }
+    .hero-socials { display: flex; gap: 1rem; margin-bottom: 2rem; }
 
     .hero-social-link {
-      width: 45px;
-      height: 45px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
+      width: 45px; height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
@@ -334,7 +299,6 @@
       background: var(--primary-gradient);
       color: var(--bg-color);
       transform: translateY(-5px);
-      border-color: transparent;
     }
 
     .hero-btns {
@@ -343,411 +307,489 @@
       flex-wrap: wrap;
     }
 
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    .hero-visual { position: relative; display: flex; justify-content: center; }
 
     .profile-photo {
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
-      height: auto;
-      border-radius: 28px;
-      display: block;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(45, 212, 191, 0.3);
+      transition: var(--transition);
+      z-index: 2;
     }
 
-    .scroll-down {
+    .hero-visual:hover .profile-photo { transform: scale(1.02); }
+
+    .hero-visual::before {
+      content: "";
       position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 10;
+      width: 380px; height: 100%;
+      border: 2px solid var(--accent-glow);
+      top: 20px; right: 20px;
+      z-index: 1;
+      clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+      opacity: 0.3;
     }
 
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
-        transform: translateY(0) translateX(-50%);
-      }
-
-      40% {
-        transform: translateY(-10px) translateX(-50%);
-      }
-
-      60% {
-        transform: translateY(-5px) translateX(-50%);
-      }
-    }
-
-    /* --- SECTIONS --- */
-    .section {
-      padding: 6rem 0;
-    }
-
-    /* --- ABOUT --- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-img-container {
-      background: var(--glass-bg);
-      padding: 10px;
-      border-radius: 4px;
-      border: 1px solid var(--glass-border);
-      transform: rotate(-3deg);
-      transition: var(--transition);
-    }
-
-    .about-img-container:hover {
-      transform: rotate(0deg) scale(1.02);
-      border-color: var(--accent-glow);
-    }
-
-    .about-img {
-      border-radius: 2px;
-      width: 100%;
-      filter: grayscale(100%);
-      transition: var(--transition);
-    }
-
-    .about-img-container:hover .about-img {
-      filter: grayscale(0%);
+    /* --- SECTIONS COMMON --- */
+    .section { padding: 6rem 0; }
+    
+    /* --- ABOUT SECTION (ENHANCED) --- */
+    .about-card {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem;
+      text-align: center;
+      /* Tech grid background pattern */
+      background-image: linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
     }
 
     .about-text h3 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: #fff;
-      line-height: 1.3;
     }
 
     .about-text p {
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
     }
 
-    .stats-grid {
+    /* Enhanced Stats Boxes */
+    .stats-wrapper {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     .stat-card {
-      padding: 1.2rem 0.8rem;
-      border-radius: 8px;
-      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       transition: var(--transition);
     }
 
     .stat-card:hover {
-      transform: translateY(-5px);
-      background: rgba(45, 212, 191, 0.05);
       border-color: var(--accent-glow);
+      background: rgba(45, 212, 191, 0.05);
+      transform: translateY(-5px);
     }
 
-    .stat-number {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      display: block;
-      margin-bottom: 0.3rem;
+    .stat-icon {
+      font-size: 1.5rem;
+      color: var(--secondary-glow);
+      margin-bottom: 0.5rem;
     }
 
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .stat-num { 
+      font-size: 2.5rem; 
+      font-weight: 800; 
+      color: #fff; 
+      line-height: 1; 
+      margin-bottom: 0.5rem; 
+    }
+    
+    .stat-label { 
+      font-size: 0.9rem; 
+      color: var(--text-muted); 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
     }
 
-    /* --- SKILLS --- */
-    .skills-container {
+    /* --- SKILLS SECTION --- */
+    .skills-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
-    .skill-card {
-      width: 140px;
-      padding: 1.5rem 1rem;
+    .skill-box {
+      width: 160px;
+      padding: 2rem 1rem;
+      text-align: center;
+      background: rgba(255,255,255,0.03);
       border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+
+    .skill-box:hover {
+      border-color: var(--accent-glow);
+      background: rgba(45, 212, 191, 0.05);
+      transform: translateY(-5px);
+    }
+
+    .skill-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--text-main); }
+    .skill-box:hover .skill-icon { color: var(--accent-glow); }
+    .skill-name { font-weight: 600; font-size: 1.1rem; color: #fff; }
+
+    /* --- EDUCATION --- */
+    .edu-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .edu-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--glass-border);
+    }
+
+    .edu-item {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .edu-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 45%;
       text-align: center;
       transition: var(--transition);
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--glass-border);
     }
 
-    .skill-card:hover {
-      transform: translateY(-5px);
+    .edu-item:nth-child(odd) { justify-content: flex-start; }
+    .edu-item:nth-child(even) { justify-content: flex-end; }
+
+    .edu-card:hover {
       border-color: var(--accent-glow);
-      box-shadow: 0 10px 30px -10px rgba(45, 212, 191, 0.2);
+      transform: scale(1.02);
     }
 
-    .skill-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.8rem;
-      color: var(--text-main);
-    }
-
-    .skill-card:hover .skill-icon {
+    .edu-year {
       color: var(--accent-glow);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
-    .skill-name {
-      font-weight: 600;
-      color: var(--text-muted);
-      font-size: 1rem;
+    .edu-degree { font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
+    .edu-school { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; }
+    .edu-grade { display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; }
+
+    .edu-item::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      background: var(--bg-color);
+      border: 3px solid var(--accent-glow);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* --- PROJECTS --- */
-    .projects-grid {
+    /* --- PROJECTS SECTION --- */
+    .projects-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      justify-content: center;
     }
 
     .project-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
       border-radius: 16px;
       overflow: hidden;
       transition: var(--transition);
-      background: #0f141a;
-      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      position: relative;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--secondary-glow);
+      transform: translateY(-10px);
+      border-color: var(--accent-glow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .project-img {
+    .project-thumb {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      border-bottom: 1px solid var(--glass-border);
     }
 
-    .project-card:hover .project-img {
-      transform: scale(1.05);
-    }
-
-    .project-content {
+    .project-info {
       padding: 1.5rem;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.8rem;
-      background: rgba(45, 212, 191, 0.1);
-      color: var(--accent-glow);
-      border-radius: 50px;
-      border: 1px solid rgba(45, 212, 191, 0.2);
-      margin-right: 5px;
-      margin-bottom: 5px;
-      display: inline-block;
+      text-align: center;
     }
 
     .project-title {
-      font-size: 1.3rem;
-      margin: 0.8rem 0;
-      color: #fff;
-    }
-
-    .project-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .link-icon {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      transition: 0.3s;
-    }
-
-    .link-icon:hover {
-      color: var(--accent-glow);
-    }
-
-    /* --- CERTIFICATES --- */
-    .certificates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .certificate-card {
-      padding: 2rem;
-      text-align: center;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: 0.3s;
-      background: var(--bg-secondary);
-      border: 1px solid var(--glass-border);
-    }
-
-    .certificate-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent-glow);
-    }
-
-    .cert-icon {
-      font-size: 2.5rem;
-      color: var(--accent-glow);
-      margin-bottom: 1rem;
-    }
-
-    .cert-info h3 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       color: #fff;
       margin-bottom: 0.5rem;
     }
 
-    .cert-issuer {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    .project-tags {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .cert-btn {
-      margin-top: 1.5rem;
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: rgba(45, 212, 191, 0.1);
+      color: var(--accent-glow);
+      border-radius: 50px;
+    }
+
+    .view-hint {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-bottom: 1px dashed var(--accent-glow);
+      padding-bottom: 2px;
+      transition: 0.3s;
+    }
+    
+    .project-card:hover .view-hint {
+      color: var(--accent-glow);
+      border-color: transparent;
+    }
+
+    /* --- PROJECT MODAL (LARGER) --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.open { display: flex; opacity: 1; }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      /* INCREASED WIDTH */
+      width: 100%;
+      max-width: 900px; 
+      border-radius: 20px;
+      border: 1px solid var(--accent-glow);
+      box-shadow: 0 0 50px rgba(45, 212, 191, 0.2);
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-overlay.open .modal-content { transform: scale(1); }
+
+    .modal-header {
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(45, 212, 191, 0.05);
+      flex-shrink: 0;
+    }
+
+    .modal-title { font-size: 2rem; color: #fff; font-weight: 800; }
+    .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+    .close-btn:hover { color: var(--danger); transform: rotate(90deg); }
+
+    .modal-body { 
+      padding: 2.5rem; 
+      color: var(--text-muted); 
+      overflow-y: auto; /* Scrollable description */
+    }
+
+    .modal-meta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: rgba(34, 211, 238, 0.1);
+      color: var(--secondary-glow);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .modal-desc {
+      line-height: 2;
+      font-size: 1.15rem; /* Larger font size */
+      margin-bottom: 2.5rem;
+      text-align: justify; /* Better reading for long text */
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .btn-modal {
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      color: var(--accent-glow);
-      border: 1px solid var(--accent-glow);
+      gap: 10px;
     }
 
-    .cert-btn:hover {
+    .btn-primary-modal {
+      background: var(--primary-gradient);
+      color: #000;
+      box-shadow: 0 0 25px rgba(45, 212, 191, 0.4);
+    }
+    .btn-primary-modal:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(45, 212, 191, 0.6); }
+
+    .btn-outline-modal {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .btn-outline-modal:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* --- CERTIFICATES (BUTTON ADDED) --- */
+    .certs-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .cert-card {
+      width: 300px;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cert-icon { font-size: 3rem; color: var(--accent-glow); margin-bottom: 1rem; }
+    .cert-title { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
+    .cert-issuer { color: var(--text-muted); margin-bottom: 0.5rem; }
+    .cert-date { font-size: 0.9rem; color: var(--secondary-glow); margin-bottom: 1.5rem; display: block; }
+    
+    /* Certificate Button */
+    .btn-cert {
+      margin-top: auto;
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid var(--accent-glow);
+      border-radius: 50px;
+      color: var(--accent-glow);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: 0.3s;
+      text-transform: uppercase;
+    }
+
+    .btn-cert:hover {
       background: var(--accent-glow);
       color: #000;
     }
 
     /* --- CONTACT FORM --- */
-    .contact-container {
+    .contact-box {
       max-width: 600px;
       margin: 0 auto;
       padding: 3rem;
-      border-radius: 20px;
-      text-align: center;
-      background: rgba(20, 25, 30, 0.6);
-      border: 1px solid var(--glass-border);
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+    .form-group { margin-bottom: 1.5rem; }
 
     .form-input {
       width: 100%;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.2);
+      padding: 1rem 1.5rem;
+      background: rgba(0,0,0,0.3);
       border: 1px solid var(--glass-border);
-      border-radius: 8px;
+      border-radius: 50px;
       color: #fff;
       font-family: inherit;
       outline: none;
       transition: 0.3s;
+      text-align: center;
     }
 
     .form-input:focus {
       border-color: var(--accent-glow);
-      box-shadow: 0 0 10px rgba(45, 212, 191, 0.1);
+      box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
     }
 
-    .form-input::placeholder {
-      color: var(--text-muted);
-    }
+    textarea.form-input { border-radius: 20px; resize: vertical; min-height: 150px; padding-top: 1rem; }
 
+    /* --- FOOTER --- */
     footer {
       padding: 2rem 0;
       text-align: center;
       color: var(--text-muted);
-      margin-top: 4rem;
       border-top: 1px solid var(--glass-border);
+      margin-top: 4rem;
+      font-size: 0.9rem;
     }
 
     /* --- MEDIA QUERIES --- */
-    @media (max-width: 968px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 3rem;
-      }
-
-      .hero-content {
-        order: 2;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .hero-visual {
-        order: 1;
-      }
-
-      .hero-socials,
-      .hero-btns {
-        justify-content: center;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-text {
-        text-align: center;
-      }
-    }
-
     @media (max-width: 768px) {
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-container { grid-template-columns: 1fr; text-align: center; padding: 0 1rem; }
+      .hero-content { order: 2; }
+      .hero-visual { order: 1; margin-bottom: 2rem; }
+      .hero-socials { justify-content: center; }
+      .hero-title { font-size: 2.5rem; }
+      .blob-1 { top: -100px; left: -50px; width: 300px; }
+      .blob-2 { bottom: -50px; right: -50px; width: 200px; }
+      .hero-btns { justify-content: center; }
 
       .nav-links {
         position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 70%;
+        top: 0; right: -100%;
+        height: 100vh; width: 70%;
         background: #0e1116;
         flex-direction: column;
         justify-content: center;
@@ -756,28 +798,33 @@
         z-index: 999;
         border-left: 1px solid var(--glass-border);
       }
+      .nav-links.active { right: 0; }
+      .menu-btn { display: block; z-index: 1001; }
 
-      .nav-links.active {
-        right: 0;
-      }
+      .edu-container::before { left: 20px; }
+      .edu-item { justify-content: flex-start; padding-left: 50px; }
+      .edu-item:nth-child(odd) { justify-content: flex-start; }
+      .edu-item:nth-child(even) { justify-content: flex-start; }
+      .edu-card { width: 100%; }
+      .edu-item::after { left: 20px; }
 
-      .menu-btn {
-        display: block;
-        z-index: 1001;
-      }
+      .modal-title { font-size: 1.5rem; }
+      .modal-content { max-width: 95%; }
     }
   </style>
 </head>
 
 <body>
+
   <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar">
     <div class="container nav-container">
       <a href="#" class="logo">NOVA<span>-FORGE</span></a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#hero" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#certificates" class="nav-link">Certificates</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -788,75 +835,66 @@
 
   <!-- HERO SECTION -->
   <section id="hero" class="hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <!-- Added ID for Dynamic Update -->
-        <div class="hero-greeting fade-in" id="hero-greeting">Hello, Welcome to My Forge</div>
-        <!-- Added ID for Dynamic Update -->
-        <h1 class="hero-title fade-in">I am <span class="hero-name" id="hero-name">ALAN BOSE</span></h1>
-
-        <div class="services-wrapper fade-in">
+        <div class="hero-greeting">Hello, Welcome to My Forge</div>
+        <h1 class="hero-title">I am <span id="hero-name">ALAN BOSE</span></h1>
+        <div class="services-wrapper">
           <span class="static-txt">And I am a </span>
-          <!-- Added ID for Dynamic Update -->
           <span class="highlight-txt" id="hero-services">Full-Stack Developer | Game Developer</span>
         </div>
-
         <div class="hero-socials">
-          <a href="https://github.com/AlanBose-dev" class="hero-social-link" target="_blank"><i
-              class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/alan-bose" class="hero-social-link" target="_blank"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="https://wa.me/917907173621" class="hero-social-link" target="_blank"><i
-              class="fab fa-whatsapp"></i></a>
-          <a href="mailto:alanbose701@gmail.com" class="hero-social-link" target="_blank"><i
-              class="fas fa-envelope"></i></a>
+          <a href="https://github.com/AlanBose-dev" class="hero-social-link" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/alan-bose" class="hero-social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/917907173621" class="hero-social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:alanbose701@gmail.com" class="hero-social-link" target="_blank"><i class="fas fa-envelope"></i></a>
         </div>
-
-        <div class="hero-btns fade-in">
+        
+        <!-- RESUME BUTTON RESTORED -->
+        <div class="hero-btns">
           <a href="#projects" class="btn btn-primary">View Work</a>
-          <a href="pdf/resume.pdf" target="_blank" class="btn btn-outline">CV / Resume</a>
+          <a href="pdf/resume.pdf" target="_blank" class="btn btn-outline">Download CV</a>
         </div>
       </div>
       <div class="hero-visual">
         <img src="images/Alan2.jpg" alt="Profile" class="profile-photo" />
       </div>
     </div>
-    <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
   </section>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT SECTION (ENHANCED) -->
   <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title hidden">About Me</h2>
-      <p class="section-subtitle hidden">Behind the code and pixels</p>
-      <div class="about-grid">
-        <div class="about-img-wrapper hidden">
-          <div class="about-img-container">
-            <img src="images/Alan3.jpeg" alt="About" class="about-img" />
-          </div>
-        </div>
-        <div class="about-text hidden">
-          <!-- Added ID for Dynamic Update -->
+    <div class="container text-center">
+      <div class="section-title">About Me</div>
+      <p class="section-subtitle">Behind the code and pixels</p>
+      
+      <div class="glass-card about-card">
+        <div class="about-text">
           <h3 id="about-headline">Building Simple and Meaningful Web Experiences</h3>
-          <!-- Added ID for Dynamic Update -->
-          <div id="about-bio">
-            <p>I am a Computer Science student with a strong interest in frontend web development. I enjoy turning ideas
-              and designs into responsive and user-friendly websites using HTML, CSS, and JavaScript.</p>
-            <p>Currently, I am improving my skills through hands-on projects and professional courses to prepare for
-              real-world development work.</p>
-          </div>
-          <div class="stats-grid">
+          <p id="about-bio">
+            I am a Computer Science student with a strong interest in frontend web development. I enjoy turning ideas and designs into responsive and user-friendly websites using HTML, CSS, and JavaScript.
+            <br><br>
+            Currently, I am improving my skills through hands-on projects and professional courses to prepare for real-world development work. I strive to create digital experiences that are not only functional but also visually engaging.
+          </p>
+          
+          <!-- ENHANCED 3 BOXES -->
+          <div class="stats-wrapper">
             <div class="stat-card glass-card">
-              <span class="stat-number">4+</span>
-              <span class="stat-label">Certifications</span>
+              <i class="fas fa-certificate stat-icon"></i>
+              <div class="stat-num">4+</div>
+              <div class="stat-label">Certifications</div>
             </div>
             <div class="stat-card glass-card">
-              <span class="stat-number">5+</span>
-              <span class="stat-label">Projects Built</span>
+              <i class="fas fa-code-branch stat-icon"></i>
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Projects</div>
             </div>
             <div class="stat-card glass-card">
-              <span class="stat-number">Full-Stack</span>
-              <span class="stat-label">Web Developer</span>
+              <i class="fas fa-laptop-code stat-icon"></i>
+              <div class="stat-num">CS</div>
+              <div class="stat-label">Student</div>
             </div>
           </div>
         </div>
@@ -866,108 +904,126 @@
 
   <!-- SKILLS SECTION -->
   <section id="skills" class="section">
-    <div class="container">
-      <h2 class="section-title hidden">Arsenal</h2>
-      <p class="section-subtitle hidden">The tools I use to create</p>
-      <!-- Added ID for Dynamic Update -->
-      <div class="skills-container" id="skills-container">
-        <!-- Hardcoded Default Content (Fallback) -->
-        <div class="skill-card hidden"><i class="fab fa-html5 skill-icon"></i>
-          <div class="skill-name">HTML5</div>
+    <div class="container text-center">
+      <div class="section-title">Skills</div>
+      <p class="section-subtitle">The tools I use to create</p>
+      <div class="skills-grid" id="skills-grid">
+        <!-- JS Injected -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="section">
+    <div class="container text-center">
+      <div class="section-title">Education</div>
+      <p class="section-subtitle">My academic journey</p>
+      
+      <div class="edu-container">
+        <!-- Static HTML based on your specific request -->
+        <div class="edu-item">
+          <div class="edu-card glass-card">
+            <span class="edu-year">2022 – 2026</span>
+            <h3 class="edu-degree">B.Tech in Computer Science and Design</h3>
+            <div class="edu-school">Vimal Jyothi Engineering College, Chemperi</div>
+            <span class="edu-grade">CGPA (Sem 1–6): 7.04</span>
+          </div>
         </div>
-        <div class="skill-card hidden"><i class="fab fa-css3-alt skill-icon"></i>
-          <div class="skill-name">CSS3</div>
+
+        <div class="edu-item">
+          <div class="edu-card glass-card">
+            <span class="edu-year">2020 – 2022</span>
+            <h3 class="edu-degree">Higher Secondary (Class 12)</h3>
+            <div class="edu-school">St. Thomas HSS, Manikkadavu – Kerala</div>
+            <span class="edu-grade">State Board Biology Science: 93.58%</span>
+          </div>
         </div>
-        <div class="skill-card hidden"><i class="fab fa-js skill-icon"></i>
-          <div class="skill-name">JavaScript</div>
-        </div>
-        <div class="skill-card hidden"><i class="fab fa-react skill-icon"></i>
-          <div class="skill-name">React</div>
-        </div>
-        <div class="skill-card hidden"><i class="fab fa-unity skill-icon"></i>
-          <div class="skill-name">Unity</div>
-        </div>
-        <div class="skill-card hidden"><i class="fas fa-cube skill-icon"></i>
-          <div class="skill-name">Blender</div>
-        </div>
-        <div class="skill-card hidden"><i class="fab fa-git-alt skill-icon"></i>
-          <div class="skill-name">Git</div>
+
+        <div class="edu-item">
+          <div class="edu-card glass-card">
+            <span class="edu-year">2020</span>
+            <h3 class="edu-degree">Secondary (Class 10)</h3>
+            <div class="edu-school">Floweret English Medium School, Ulikkal</div>
+            <span class="edu-grade">CBSE: 71.8%</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS SECTION (BIGGER MODAL) -->
   <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title hidden">Selected Works</h2>
-      <p class="section-subtitle hidden">Highlights from the forge</p>
-      <!-- Added ID for Dynamic Update -->
-      <div class="projects-grid" id="projects-grid">
-        <!-- Hardcoded Default Content -->
-        <div class="project-card hidden">
-          <div class="project-img-wrapper"><img src="https://placehold.co/600x400/0E1116/2DD4BF?text=E-Commerce"
-              alt="Project 1" class="project-img" /></div>
-          <div class="project-content">
-            <div class="project-tags"><span class="tag">React</span><span class="tag">Firebase</span></div>
-            <h3 class="project-title">E-Commerce Dashboard</h3>
-            <p class="project-desc">A full-featured dashboard for managing products, orders, and analytics.</p>
-            <div class="project-links">
-              <a href="#" class="link-icon" title="Code"><i class="fab fa-github"></i></a>
-              <a href="#" class="link-icon" title="Demo"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card hidden">
-          <div class="project-img-wrapper"><img src="https://placehold.co/600x400/0E1116/22D3EE?text=Game"
-              alt="Project 2" class="project-img" /></div>
-          <div class="project-content">
-            <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
-            <h3 class="project-title">Space Explorer</h3>
-            <p class="project-desc">A 2D platformer game developed in Unity featuring custom physics.</p>
-            <div class="project-links">
-              <a href="#" class="link-icon" title="Code"><i class="fab fa-github"></i></a>
-              <a href="#" class="link-icon" title="Demo"><i class="fas fa-gamepad"></i></a>
-            </div>
-          </div>
-        </div>
+    <div class="container text-center">
+      <div class="section-title">Projects</div>
+      <p class="section-subtitle">Selected works and detailed breakdowns</p>
+      
+      <div class="projects-wrapper" id="projects-wrapper">
+        <!-- JS Injected -->
       </div>
     </div>
   </section>
 
-  <!-- CERTIFICATES SECTION -->
-  <section id="certificates" class="section">
-    <div class="container">
-      <h2 class="section-title">Certifications</h2>
-      <p class="section-subtitle">Credentials & Achievements</p>
-      <!-- Added ID for Dynamic Update -->
-      <div class="certificates-grid" id="certs-grid">
-        <!-- Hardcoded Default Content -->
-        <div class="certificate-card glass-card">
-          <div class="cert-icon"><i class="fas fa-award"></i></div>
-          <div class="cert-info">
-            <h3>Full Stack Foundation</h3>
-            <div class="cert-issuer">Microsoft</div>
-            <span class="cert-date" style="display: block; color: var(--accent-glow); margin: 5px 0">Dec 2025</span>
-            <a href="pdf/fullstack-cert.pdf" target="_blank" class="cert-btn">View Certificate <i
-                class="fas fa-external-link-alt"></i></a>
+  <!-- PROJECT MODAL POPUP (LARGEST VERSION) -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="m-title">Project Name</h3>
+        <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-meta">
+          <span class="meta-pill" id="m-type">Web Dev</span>
+          <div id="m-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center;">
+            <!-- Stack tags -->
           </div>
         </div>
+        <!-- Larger Description Area -->
+        <p class="modal-desc" id="m-desc">Description goes here...</p>
+        
+        <div class="modal-actions">
+          <a href="#" id="m-code" class="btn-modal btn-primary-modal" target="_blank">
+            <i class="fab fa-github"></i> Source Code
+          </a>
+          <a href="#" id="m-demo" class="btn-modal btn-outline-modal" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATES SECTION (BUTTON ADDED) -->
+  <section id="certificates" class="section">
+    <div class="container text-center">
+      <div class="section-title">Certifications</div>
+      <p class="section-subtitle">Credentials & Achievements</p>
+      
+      <div class="certs-grid" id="certs-grid">
+        <!-- JS Injected -->
       </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title hidden">Get In Touch</h2>
-      <div class="contact-container hidden">
-        <p class="contact-text">I'm currently open for freelance work. Send me a message directly!</p>
-        <form id="contactForm" class="contact-form">
-          <input type="text" id="msg-name" placeholder="Your Name" class="form-input" required>
-          <input type="email" id="msg-email" placeholder="Your Email" class="form-input" required>
-          <textarea id="msg-content" rows="5" placeholder="Your Message" class="form-input" required></textarea>
-          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+    <div class="container text-center">
+      <div class="section-title">Get In Touch</div>
+      <p class="section-subtitle">Let's build something amazing together</p>
+      
+      <div class="glass-card contact-box">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="msg-name" placeholder="Your Name" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="msg-email" placeholder="Your Email" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <textarea id="msg-content" placeholder="Your Message" class="form-input" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
         </form>
       </div>
     </div>
@@ -976,14 +1032,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> NOVA-FORGE.</p>
+      <p>&copy; <span id="year"></span> NOVA-FORGE. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT & FIREBASE LOGIC -->
+  <!-- JAVASCRIPT -->
   <script type="module">
-    // 1. UTILS & UI
+    // 1. UI INTERACTION
     document.getElementById('year').textContent = new Date().getFullYear();
+    
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
 
@@ -998,23 +1055,6 @@
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-      });
-    });
-
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
-
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.fade-in').forEach((el, index) => {
-        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, index * 200);
       });
     });
 
@@ -1034,79 +1074,164 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // 3. FETCH DYNAMIC CONTENT (ADMIN UPDATES)
-    // We look for updates. If found, we overwrite the hardcoded text.
-    onSnapshot(doc(db, "website", "content"), (docSnap) => {
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-
-        // Hero Updates
-        if (data.hero?.greeting) document.getElementById('hero-greeting').textContent = data.hero.greeting;
-        if (data.hero?.name) document.getElementById('hero-name').textContent = data.hero.name;
-        if (data.hero?.services) document.getElementById('hero-services').textContent = Array.isArray(data.hero.services) ? data.hero.services.join(' | ') : data.hero.services;
-
-        // About Updates
-        if (data.about?.headline) document.getElementById('about-headline').textContent = data.about.headline;
-        if (data.about?.bio) document.getElementById('about-bio').innerHTML = `<p>${data.about.bio.replace(/\n/g, '<br>')}</p>`;
-
-        // Dynamic Skills (Only replace if admin added skills)
-        if (data.skills && data.skills.length > 0) {
-          const cont = document.getElementById('skills-container');
-          cont.innerHTML = '';
-          data.skills.forEach(s => {
-            cont.innerHTML += `<div class="skill-card hidden show"><i class="${s.icon} skill-icon"></i><div class="skill-name">${s.name}</div></div>`;
-          });
+    // 3. DEFAULT DATA
+    const DEFAULT_DATA = {
+      hero: {
+        name: "ALAN BOSE",
+        services: ["Full-Stack Developer", "Game Developer"]
+      },
+      about: {
+        headline: "Building Simple and Meaningful Web Experiences",
+        bio: "I am a Computer Science student with a strong interest in frontend web development. I enjoy turning ideas and designs into responsive and user-friendly websites using HTML, CSS, and JavaScript.\n\nCurrently, I am improving my skills through hands-on projects and professional courses to prepare for real-world development work."
+      },
+      skills: [
+        { name: "HTML5", icon: "fab fa-html5" },
+        { name: "CSS3", icon: "fab fa-css3-alt" },
+        { name: "JavaScript", icon: "fab fa-js" },
+        { name: "React", icon: "fab fa-react" },
+        { name: "Unity", icon: "fab fa-unity" },
+        { name: "Blender", icon: "fas fa-cube" },
+        { name: "Git", icon: "fab fa-git-alt" }
+      ],
+      projects: [
+        {
+          title: "E-Commerce Dashboard",
+          type: "Web Development",
+          stack: ["React", "Firebase", "Redux"],
+          desc: "A full-featured dashboard for managing products, orders, and analytics. Includes real-time data sync, user authentication, dark mode, and a responsive design optimized for mobile usage. This project helped me understand complex state management and database integration.",
+          link_code: "#",
+          link_demo: "#",
+          image: "https://placehold.co/600x400/0E1116/2DD4BF?text=E-Commerce+Dashboard" 
+        },
+        {
+          title: "Space Explorer",
+          type: "Game Development",
+          stack: ["Unity", "C#", "Physics2D"],
+          desc: "A 2D platformer game developed in Unity featuring custom physics engine, particle systems, and a level editor. Optimized for mobile devices with touch controls. I implemented a custom save system and achievement tracking.",
+          link_code: "#",
+          link_demo: "#",
+          image: "https://placehold.co/600x400/0E1116/22D3EE?text=Space+Explorer"
         }
+      ],
+      certificates: [
+        { title: "Full Stack Foundation", issuer: "Microsoft", date: "Dec 2025", link: "pdf/fullstack-cert.pdf", icon: "fas fa-award" }
+      ]
+    };
 
-        // Dynamic Projects
-        if (data.projects && data.projects.length > 0) {
-          const cont = document.getElementById('projects-grid');
-          cont.innerHTML = '';
-          data.projects.forEach(p => {
-            cont.innerHTML += `
-                            <div class="project-card hidden show">
-                                <div class="project-img-wrapper"><img src="https://placehold.co/600x400/0E1116/2DD4BF?text=${p.title}" class="project-img"></div>
-                                <div class="project-content">
-                                    <div class="project-tags"><span class="tag">${p.category}</span><span class="tag">${p.subtitle}</span></div>
-                                    <h3 class="project-title">${p.title}</h3>
-                                    <p class="project-desc">${p.desc}</p>
-                                    <div class="project-links">
-                                        <a href="${p.link_code}" class="link-icon" title="Code" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="${p.link_demo}" class="link-icon" title="Demo" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>`;
-          });
-        }
+    // 4. RENDER FUNCTIONS
+    function renderSkills(skills) {
+      const grid = document.getElementById('skills-grid');
+      grid.innerHTML = '';
+      skills.forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'skill-box glass-card';
+        div.innerHTML = `<i class="${s.icon} skill-icon"></i><div class="skill-name">${s.name}</div>`;
+        grid.appendChild(div);
+      });
+    }
 
-        // Dynamic Certificates
-        if (data.certificates && data.certificates.length > 0) {
-          const cont = document.getElementById('certs-grid');
-          cont.innerHTML = '';
-          data.certificates.forEach(c => {
-            cont.innerHTML += `
-                            <div class="certificate-card glass-card hidden show">
-                                <div class="cert-icon"><i class="${c.icon}"></i></div>
-                                <div class="cert-info">
-                                    <h3>${c.title}</h3>
-                                    <div class="cert-issuer">${c.issuer}</div>
-                                    <span class="cert-date" style="display:block; color:var(--accent-glow); margin:5px 0;">${c.date}</span>
-                                    <a href="${c.link}" target="_blank" class="cert-btn">View Certificate <i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>`;
-          });
-        }
+    function renderProjects(projects) {
+      const wrapper = document.getElementById('projects-wrapper');
+      wrapper.innerHTML = '';
+      
+      projects.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'project-card glass-card';
+        
+        card.innerHTML = `
+          <img src="${p.image || 'https://placehold.co/600x400/0E1116/2DD4BF?text=Project'}" class="project-thumb" alt="${p.title}">
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="tag">${p.type || 'Project'}</span>
+            </div>
+            <h3 class="project-title">${p.title}</h3>
+            <span class="view-hint">Click for Details</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => openModal(p));
+        wrapper.appendChild(card);
+      });
+    }
+
+    function renderCerts(certs) {
+      const grid = document.getElementById('certs-grid');
+      grid.innerHTML = '';
+      certs.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'cert-card glass-card';
+        // Added a View Certificate Button here
+        div.innerHTML = `
+          <i class="${c.icon} cert-icon"></i>
+          <h3 class="cert-title">${c.title}</h3>
+          <div class="cert-issuer">${c.issuer}</div>
+          <span class="cert-date">${c.date}</span>
+          <a href="${c.link}" target="_blank" class="btn-cert">
+            <i class="fas fa-eye"></i> View Certificate
+          </a>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    // 5. MODAL LOGIC
+    const modal = document.getElementById('project-modal');
+
+    window.openModal = (project) => {
+      document.getElementById('m-title').textContent = project.title;
+      document.getElementById('m-type').textContent = project.type || 'Project';
+      document.getElementById('m-desc').textContent = project.desc;
+      
+      document.getElementById('m-code').href = project.link_code || '#';
+      document.getElementById('m-demo').href = project.link_demo || '#';
+
+      const stackDiv = document.getElementById('m-stack');
+      stackDiv.innerHTML = '';
+      if(project.stack && Array.isArray(project.stack)) {
+        project.stack.forEach(tech => {
+          const span = document.createElement('span');
+          span.className = 'meta-pill';
+          span.textContent = tech;
+          stackDiv.appendChild(span);
+        });
       }
+
+      modal.classList.add('open');
+    };
+
+    window.closeModal = () => {
+      modal.classList.remove('open');
+    };
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
     });
 
-    // 4. CONTACT FORM
+    // 6. DATA SYNC
+    onSnapshot(doc(db, "website", "content"), (docSnap) => {
+      const data = docSnap.exists() ? { ...DEFAULT_DATA, ...docSnap.data() } : DEFAULT_DATA;
+
+      // Update Text Fields
+      if (data.hero?.name) document.getElementById('hero-name').textContent = data.hero.name;
+      if (data.hero?.services) document.getElementById('hero-services').textContent = Array.isArray(data.hero.services) ? data.hero.services.join(' | ') : data.hero.services;
+      if (data.about?.headline) document.getElementById('about-headline').textContent = data.about.headline;
+      if (data.about?.bio) document.getElementById('about-bio').innerHTML = `<p>${data.about.bio.replace(/\n/g, '<br>')}</p>`;
+
+      // Render Lists
+      if (data.skills) renderSkills(data.skills);
+      if (data.projects) renderProjects(data.projects);
+      if (data.certificates) renderCerts(data.certificates);
+    });
+
+    // 7. CONTACT FORM
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = e.target.querySelector('button');
       const originalText = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
 
       try {
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         await addDoc(collection(db, "messages"), {
           name: document.getElementById('msg-name').value,
           email: document.getElementById('msg-email').value,
@@ -1117,12 +1242,13 @@
         e.target.reset();
       } catch (error) {
         console.error("Error:", error);
-        alert("Failed to send message. Check console for details.");
+        alert("Failed to send message.");
       } finally {
         btn.innerHTML = originalText;
+        btn.disabled = false;
       }
     });
+
   </script>
 </body>
-
 </html>
