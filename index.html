@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,25 +31,14 @@
       --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Outfit", sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
-      background-image: radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.06), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.06), transparent 40%);
-      background-attachment: fixed;
     }
 
     a { text-decoration: none; color: inherit; }
@@ -58,15 +46,9 @@
     img { max-width: 100%; display: block; }
 
     /* --- UTILITIES --- */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
     .text-center { text-align: center; }
-    .flex-center { display: flex; justify-content: center; align-items: center; }
-
+    
     .section-title {
       font-size: 2.5rem;
       margin-bottom: 1rem;
@@ -75,741 +57,159 @@
       background-clip: text;
       color: transparent;
       font-weight: 800;
-      letter-spacing: -1px;
       text-transform: uppercase;
       display: inline-block;
     }
 
-    .section-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 4rem;
-      font-size: 1.1rem;
-    }
+    .section-subtitle { color: var(--text-muted); margin-bottom: 4rem; font-size: 1.1rem; }
 
-    /* --- GLASS CARD COMPONENT --- */
+    /* --- GLASS CARD --- */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
       border-radius: 16px;
       transition: var(--transition);
     }
-
-    .glass-card:hover {
-      border-color: var(--accent-glow);
-      box-shadow: 0 0 20px rgba(45, 212, 191, 0.15);
-      transform: translateY(-5px);
-    }
+    .glass-card:hover { border-color: var(--accent-glow); transform: translateY(-5px); }
 
     /* --- BUTTONS --- */
     .btn {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
+      display: inline-block; padding: 0.9rem 2.2rem; border-radius: 50px;
+      font-weight: 700; transition: var(--transition); cursor: pointer; border: none;
+      text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px;
     }
-
-    .btn-primary {
-      background: var(--text-main);
-      color: var(--bg-color);
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .btn-primary::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--primary-gradient);
-      z-index: -1;
-      transition: opacity 0.3s ease;
-      opacity: 0;
-    }
-
-    .btn-primary:hover {
-      color: var(--bg-color);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3);
-    }
-    
-    .btn-primary:hover::before { opacity: 1; }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: var(--text-main);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent-glow);
-      background: rgba(45, 212, 191, 0.1);
-    }
+    .btn-primary { background: var(--text-main); color: var(--bg-color); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3); background: var(--accent-glow); }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: var(--text-main); }
+    .btn-outline:hover { border-color: var(--accent-glow); background: rgba(45, 212, 191, 0.1); }
 
     /* --- NAVBAR --- */
     .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1.2rem 0;
-      z-index: 1000;
-      background: rgba(14, 17, 22, 0.85);
-      backdrop-filter: blur(10px);
+      position: fixed; top: 0; width: 100%; padding: 1.2rem 0; z-index: 1000;
+      background: rgba(14, 17, 22, 0.85); backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-    }
-
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-transform: uppercase; }
     .logo span { color: var(--accent-glow); }
-
     .nav-links { display: flex; gap: 2.5rem; }
-
-    .nav-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: var(--transition);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .nav-link:hover, .nav-link.active { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
-
+    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; transition: 0.3s; }
+    .nav-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
     .menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
 
-    /* --- HERO SECTION --- */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-      position: relative;
-      overflow: hidden;
+    /* --- HERO --- */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
+    .hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; }
+    .hero-greeting { 
+      display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--accent-glow);
+      border-radius: 50px; color: var(--accent-glow); font-weight: 600; margin-bottom: 1rem;
     }
-
-    .hero-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-      opacity: 0.4;
-      animation: float 10s infinite alternate;
-    }
-
-    .blob-1 { width: 400px; height: 400px; background: var(--accent-glow); top: -50px; left: -100px; }
-    .blob-2 { width: 300px; height: 300px; background: var(--secondary-glow); bottom: 50px; right: -50px; }
-
-    @keyframes float {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(30px, 50px); }
-    }
-
-    .hero-container {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
-      align-items: center;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .hero-content { text-align: left; z-index: 2; }
+    .hero-title { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; font-weight: 800; }
+    .hero-title span { background: var(--primary-gradient); -webkit-background-clip: text; color: transparent; }
+    .highlight-txt { color: #ffd700; font-weight: 700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
     
-    .hero-greeting {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(45, 212, 191, 0.2);
-      border-radius: 50px;
-      color: var(--accent-glow);
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      letter-spacing: -2px;
-    }
-
-    .hero-title span {
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      position: relative;
-    }
-
-    .services-wrapper {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
-
-    .highlight-txt {
-      font-weight: 700;
-      margin-left: 8px;
-      color: #ffd700 !important;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    }
-
-    .hero-socials { display: flex; gap: 1rem; margin-bottom: 2rem; }
-
+    .hero-socials { display: flex; gap: 1rem; margin-bottom: 2rem; margin-top: 1.5rem; }
     .hero-social-link {
-      width: 45px; height: 45px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      transition: var(--transition);
-      font-size: 1.2rem;
+      width: 45px; height: 45px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: 0.3s;
     }
-
-    .hero-social-link:hover {
-      background: var(--primary-gradient);
-      color: var(--bg-color);
-      transform: translateY(-5px);
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .hero-social-link:hover { background: var(--accent-glow); color: #000; transform: translateY(-5px); }
 
     .profile-photo {
-      max-width: 380px;
-      width: 100%;
-      clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-      border: 2px solid rgba(45, 212, 191, 0.3);
-      transition: var(--transition);
-      z-index: 2;
+      max-width: 380px; width: 100%; clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); border: 2px solid rgba(45, 212, 191, 0.3);
     }
 
-    .hero-visual:hover .profile-photo { transform: scale(1.02); }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      width: 380px; height: 100%;
-      border: 2px solid var(--accent-glow);
-      top: 20px; right: 20px;
-      z-index: 1;
-      clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-      opacity: 0.3;
-    }
-
-    /* --- SECTIONS COMMON --- */
+    /* --- SECTION COMMON --- */
     .section { padding: 6rem 0; }
-    
-    /* --- ABOUT SECTION (ENHANCED) --- */
-    .about-card {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem;
-      text-align: center;
-      /* Tech grid background pattern */
-      background-image: linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
 
-    .about-text h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
+    /* --- ABOUT --- */
+    .about-card { padding: 3rem; max-width: 900px; margin: 0 auto; text-align: center; }
+    .stats-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .stat-card { padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid var(--glass-border); }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #fff; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
 
-    .about-text p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 2.5rem;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.8;
-    }
-
-    /* Enhanced Stats Boxes */
-    .stats-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .stat-card {
-      padding: 2rem;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-
-    .stat-card:hover {
-      border-color: var(--accent-glow);
-      background: rgba(45, 212, 191, 0.05);
-      transform: translateY(-5px);
-    }
-
-    .stat-icon {
-      font-size: 1.5rem;
-      color: var(--secondary-glow);
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-num { 
-      font-size: 2.5rem; 
-      font-weight: 800; 
-      color: #fff; 
-      line-height: 1; 
-      margin-bottom: 0.5rem; 
-    }
-    
-    .stat-label { 
-      font-size: 0.9rem; 
-      color: var(--text-muted); 
-      text-transform: uppercase; 
-      letter-spacing: 1px; 
-    }
-
-    /* --- SKILLS SECTION --- */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .skill-box {
-      width: 160px;
-      padding: 2rem 1rem;
-      text-align: center;
-      background: rgba(255,255,255,0.03);
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      transition: var(--transition);
-    }
-
-    .skill-box:hover {
-      border-color: var(--accent-glow);
-      background: rgba(45, 212, 191, 0.05);
-      transform: translateY(-5px);
-    }
-
+    /* --- SKILLS --- */
+    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+    .skill-box { width: 150px; padding: 2rem 1rem; text-align: center; }
     .skill-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--text-main); }
     .skill-box:hover .skill-icon { color: var(--accent-glow); }
-    .skill-name { font-weight: 600; font-size: 1.1rem; color: #fff; }
 
-    /* --- EDUCATION --- */
-    .edu-container {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      padding: 2rem 0;
-    }
-
-    .edu-container::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: var(--glass-border);
-    }
-
-    .edu-item {
-      display: flex;
-      justify-content: center;
-      padding: 2rem 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    .edu-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 45%;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .edu-item:nth-child(odd) { justify-content: flex-start; }
-    .edu-item:nth-child(even) { justify-content: flex-end; }
-
-    .edu-card:hover {
-      border-color: var(--accent-glow);
-      transform: scale(1.02);
-    }
-
-    .edu-year {
-      color: var(--accent-glow);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .edu-degree { font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
-    .edu-school { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; }
-    .edu-grade { display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; }
-
-    .edu-item::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 16px;
-      height: 16px;
-      background: var(--bg-color);
-      border: 3px solid var(--accent-glow);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    /* --- PROJECTS SECTION --- */
+    /* --- PROJECTS (UPDATED LAYOUT) --- */
     .projects-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      justify-content: center;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; justify-content: center;
     }
-
     .project-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: var(--transition);
-      cursor: pointer;
-      position: relative;
+      background: var(--bg-secondary); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden;
+      cursor: pointer; transition: var(--transition); position: relative;
     }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent-glow);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .project-thumb {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    .project-info {
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .project-title {
-      font-size: 1.4rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-tags {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      background: rgba(45, 212, 191, 0.1);
-      color: var(--accent-glow);
-      border-radius: 50px;
-    }
-
-    .view-hint {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-bottom: 1px dashed var(--accent-glow);
-      padding-bottom: 2px;
-      transition: 0.3s;
-    }
+    .project-card:hover { transform: translateY(-10px); border-color: var(--accent-glow); }
     
-    .project-card:hover .view-hint {
-      color: var(--accent-glow);
-      border-color: transparent;
+    .project-thumb { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
+    .project-info { padding: 1.5rem; text-align: center; }
+    .project-title { font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
+    .project-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.5rem; }
+    .stack-tag { font-size: 0.75rem; padding: 4px 10px; background: rgba(45, 212, 191, 0.1); color: var(--accent-glow); border-radius: 50px; }
+    
+    /* Click overlay hint */
+    .click-hint {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center;
+      opacity: 0; transition: 0.3s;
     }
+    .project-card:hover .click-hint { opacity: 1; }
+    .hint-text { color: #fff; font-weight: 700; letter-spacing: 1px; border: 1px solid var(--accent-glow); padding: 10px 20px; border-radius: 30px; background: #000; }
 
-    /* --- PROJECT MODAL (LARGER) --- */
+    /* --- MODAL --- */
     .modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); z-index: 2000; display: none;
+      justify-content: center; align-items: center; padding: 1rem; opacity: 0; transition: opacity 0.3s;
     }
-
     .modal-overlay.open { display: flex; opacity: 1; }
-
     .modal-content {
-      background: var(--bg-secondary);
-      /* INCREASED WIDTH */
-      width: 100%;
-      max-width: 900px; 
-      border-radius: 20px;
-      border: 1px solid var(--accent-glow);
-      box-shadow: 0 0 50px rgba(45, 212, 191, 0.2);
-      position: relative;
-      transform: scale(0.9);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      overflow: hidden;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
+      background: var(--bg-secondary); width: 100%; max-width: 800px;
+      border-radius: 20px; border: 1px solid var(--accent-glow);
+      position: relative; padding: 2.5rem; transform: scale(0.9); transition: 0.3s;
     }
-
     .modal-overlay.open .modal-content { transform: scale(1); }
+    .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+    .modal-header h3 { font-size: 2rem; color: var(--accent-glow); margin-bottom: 1rem; }
+    .modal-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; }
+    .modal-actions { display: flex; gap: 1rem; }
 
-    .modal-header {
-      padding: 1.5rem 2.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(45, 212, 191, 0.05);
-      flex-shrink: 0;
-    }
+    /* --- CERTIFICATES --- */
+    .certs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+    .cert-card { width: 300px; padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .cert-icon { font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 1rem; }
+    .cert-title { color: #fff; margin-bottom: 0.5rem; }
+    .cert-btn { margin-top: 1rem; padding: 8px 20px; border: 1px solid var(--accent-glow); color: var(--accent-glow); border-radius: 20px; font-size: 0.9rem; transition: 0.3s; }
+    .cert-btn:hover { background: var(--accent-glow); color: #000; }
 
-    .modal-title { font-size: 2rem; color: #fff; font-weight: 800; }
-    .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
-    .close-btn:hover { color: var(--danger); transform: rotate(90deg); }
-
-    .modal-body { 
-      padding: 2.5rem; 
-      color: var(--text-muted); 
-      overflow-y: auto; /* Scrollable description */
-    }
-
-    .modal-meta {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-pill {
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      background: rgba(34, 211, 238, 0.1);
-      color: var(--secondary-glow);
-      border: 1px solid rgba(34, 211, 238, 0.2);
-    }
-
-    .modal-desc {
-      line-height: 2;
-      font-size: 1.15rem; /* Larger font size */
-      margin-bottom: 2.5rem;
-      text-align: justify; /* Better reading for long text */
-    }
-
-    .modal-actions {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding-bottom: 1rem;
-      flex-shrink: 0;
-    }
-
-    .btn-modal {
-      padding: 15px 35px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      transition: 0.3s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-primary-modal {
-      background: var(--primary-gradient);
-      color: #000;
-      box-shadow: 0 0 25px rgba(45, 212, 191, 0.4);
-    }
-    .btn-primary-modal:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(45, 212, 191, 0.6); }
-
-    .btn-outline-modal {
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-    }
-    .btn-outline-modal:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
-
-    /* --- CERTIFICATES (BUTTON ADDED) --- */
-    .certs-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .cert-card {
-      width: 300px;
-      text-align: center;
-      padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .cert-icon { font-size: 3rem; color: var(--accent-glow); margin-bottom: 1rem; }
-    .cert-title { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
-    .cert-issuer { color: var(--text-muted); margin-bottom: 0.5rem; }
-    .cert-date { font-size: 0.9rem; color: var(--secondary-glow); margin-bottom: 1.5rem; display: block; }
-    
-    /* Certificate Button */
-    .btn-cert {
-      margin-top: auto;
-      display: inline-block;
-      padding: 10px 20px;
-      border: 1px solid var(--accent-glow);
-      border-radius: 50px;
-      color: var(--accent-glow);
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: 0.3s;
-      text-transform: uppercase;
-    }
-
-    .btn-cert:hover {
-      background: var(--accent-glow);
-      color: #000;
-    }
-
-    /* --- CONTACT FORM --- */
-    .contact-box {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 3rem;
-    }
-
-    .form-group { margin-bottom: 1.5rem; }
-
+    /* --- CONTACT --- */
+    .contact-box { max-width: 600px; margin: 0 auto; padding: 3rem; }
     .form-input {
-      width: 100%;
-      padding: 1rem 1.5rem;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid var(--glass-border);
-      border-radius: 50px;
-      color: #fff;
-      font-family: inherit;
-      outline: none;
-      transition: 0.3s;
-      text-align: center;
+      width: 100%; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
+      border-radius: 10px; color: #fff; margin-bottom: 1.5rem; outline: none; transition: 0.3s;
     }
+    .form-input:focus { border-color: var(--accent-glow); }
 
-    .form-input:focus {
-      border-color: var(--accent-glow);
-      box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
-    }
-
-    textarea.form-input { border-radius: 20px; resize: vertical; min-height: 150px; padding-top: 1rem; }
-
-    /* --- FOOTER --- */
-    footer {
-      padding: 2rem 0;
-      text-align: center;
-      color: var(--text-muted);
-      border-top: 1px solid var(--glass-border);
-      margin-top: 4rem;
-      font-size: 0.9rem;
-    }
-
-    /* --- MEDIA QUERIES --- */
+    /* --- MOBILE --- */
     @media (max-width: 768px) {
-      .hero-container { grid-template-columns: 1fr; text-align: center; padding: 0 1rem; }
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
       .hero-content { order: 2; }
-      .hero-visual { order: 1; margin-bottom: 2rem; }
-      .hero-socials { justify-content: center; }
-      .hero-title { font-size: 2.5rem; }
-      .blob-1 { top: -100px; left: -50px; width: 300px; }
-      .blob-2 { bottom: -50px; right: -50px; width: 200px; }
-      .hero-btns { justify-content: center; }
-
+      .hero-visual { order: 1; margin-bottom: 2rem; display: flex; justify-content: center; }
       .nav-links {
-        position: fixed;
-        top: 0; right: -100%;
-        height: 100vh; width: 70%;
-        background: #0e1116;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s;
-        z-index: 999;
-        border-left: 1px solid var(--glass-border);
+        position: fixed; top: 0; right: -100%; height: 100vh; width: 70%;
+        background: #0e1116; flex-direction: column; justify-content: center;
+        align-items: center; transition: 0.3s; z-index: 999; border-left: 1px solid var(--glass-border);
       }
       .nav-links.active { right: 0; }
       .menu-btn { display: block; z-index: 1001; }
-
-      .edu-container::before { left: 20px; }
-      .edu-item { justify-content: flex-start; padding-left: 50px; }
-      .edu-item:nth-child(odd) { justify-content: flex-start; }
-      .edu-item:nth-child(even) { justify-content: flex-start; }
-      .edu-card { width: 100%; }
-      .edu-item::after { left: 20px; }
-
-      .modal-title { font-size: 1.5rem; }
-      .modal-content { max-width: 95%; }
+      .stats-wrapper { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -825,7 +225,7 @@
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#certifications" class="nav-link">Certificates</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></div>
@@ -833,69 +233,62 @@
   </nav>
 
   <!-- HERO SECTION -->
-  <section id="hero" class="hero">
-    <div class="hero-blob blob-1"></div>
-    <div class="hero-blob blob-2"></div>
+  <section class="hero">
     <div class="container hero-container">
       <div class="hero-content">
         <div class="hero-greeting">Hello, Welcome to My Forge</div>
-        <h1 class="hero-title">I am <span id="hero-name">ALAN BOSE</span></h1>
-        <div class="services-wrapper">
-          <span class="static-txt">And I am a </span>
-          <span class="highlight-txt" id="hero-services">Full-Stack Developer</span>
-        </div>
-        <div class="hero-socials">
-          <a href="https://github.com/AlanBose-dev" class="hero-social-link" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/alan-bose" class="hero-social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://wa.me/917907173621" class="hero-social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:alanbose701@gmail.com" class="hero-social-link" target="_blank"><i class="fas fa-envelope"></i></a>
+        <h1 class="hero-title">I am <span>ALAN BOSE</span></h1>
+        <div style="font-size: 1.2rem; color: var(--text-muted);">
+          And I am a <span class="highlight-txt">Full-Stack Developer</span>
         </div>
         
-        <!-- RESUME BUTTON RESTORED -->
-        <div class="hero-btns">
+        <div class="hero-socials">
+          <a href="https://github.com/AlanBose-dev" target="_blank" class="hero-social-link"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/alan-bose" target="_blank" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/917907173621" target="_blank" class="hero-social-link"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:alanbose701@gmail.com" target="_blank" class="hero-social-link"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <div style="display: flex; gap: 1rem;">
           <a href="#projects" class="btn btn-primary">View Work</a>
+          <!-- Ensure your resume is named correctly in 'pdf' folder -->
           <a href="pdf/resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
         </div>
       </div>
+      
       <div class="hero-visual">
-        <img src="images/Alan2.jpg" alt="Profile" class="profile-photo" />
+        <!-- Ensure your image is named correctly in 'images' folder -->
+        <img src="images/Alan2.jpg" alt="Profile" class="profile-photo" onerror="this.src='https://placehold.co/400x400/151A21/2DD4BF?text=Alan+Bose'" />
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION (ENHANCED) -->
+  <!-- ABOUT SECTION -->
   <section id="about" class="section">
     <div class="container text-center">
       <div class="section-title">About Me</div>
-      <p class="section-subtitle">Behind the code and pixels</p>
-      
       <div class="glass-card about-card">
-        <div class="about-text">
-          <h3 id="about-headline">Building Simple and Meaningful Web Experiences</h3>
-          <p id="about-bio">
-            Final-year Computer Science and Design student with hands-on experience in full stack web development. <br><br>
-            Skilled in HTML, CSS, JavaScript, and Firebase, with practical experience building real-world applications
-             such as complaint reporting and online voting systems. Seeking an entry-level role where I can apply my 
-             skills and continue growing as a developer.
-          </p>
-          
-          <!-- ENHANCED 3 BOXES -->
-          <div class="stats-wrapper">
-            <div class="stat-card glass-card">
-              <i class="fas fa-certificate stat-icon"></i>
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Certifications</div>
-            </div>
-            <div class="stat-card glass-card">
-              <i class="fas fa-code-branch stat-icon"></i>
-              <div class="stat-num">2+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-card glass-card">
-              <i class="fas fa-laptop-code stat-icon"></i>
-              <div class="stat-num">Full Stack</div>
-              <div class="stat-label">Developer</div>
-            </div>
+        <h3>Building Simple and Meaningful Web Experiences</h3>
+        <br>
+        <p style="color: var(--text-muted); line-height: 1.8;">
+          Final-year Computer Science and Design student with hands-on experience in full stack web development. 
+          Skilled in HTML, CSS, JavaScript, and Firebase, with practical experience building real-world applications 
+          such as complaint reporting and online voting systems. Seeking an entry-level role where I can apply my 
+          skills and continue growing as a developer.
+        </p>
+        
+        <div class="stats-wrapper">
+          <div class="stat-card">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">Stack</div>
+            <div class="stat-label">MERN / Firebase</div>
           </div>
         </div>
       </div>
@@ -906,9 +299,14 @@
   <section id="skills" class="section">
     <div class="container text-center">
       <div class="section-title">Skills</div>
-      <p class="section-subtitle">The tools I use to create</p>
-      <div class="skills-grid" id="skills-grid">
-        <!-- JS Injected -->
+      <div class="skills-grid">
+        <div class="skill-box glass-card"><i class="fab fa-html5 skill-icon"></i><div>HTML5</div></div>
+        <div class="skill-box glass-card"><i class="fab fa-css3-alt skill-icon"></i><div>CSS3</div></div>
+        <div class="skill-box glass-card"><i class="fab fa-js skill-icon"></i><div>JavaScript</div></div>
+        <div class="skill-box glass-card"><i class="fab fa-react skill-icon"></i><div>React</div></div>
+        <div class="skill-box glass-card"><i class="fas fa-database skill-icon"></i><div>Firebase</div></div>
+        <div class="skill-box glass-card"><i class="fab fa-unity skill-icon"></i><div>Unity</div></div>
+        <div class="skill-box glass-card"><i class="fab fa-git-alt skill-icon"></i><div>Git</div></div>
       </div>
     </div>
   </section>
@@ -917,187 +315,192 @@
   <section id="education" class="section">
     <div class="container text-center">
       <div class="section-title">Education</div>
-      <p class="section-subtitle">My academic journey</p>
-      
-      <div class="edu-container">
-        <!-- Static HTML based on your specific request -->
-        <div class="edu-item">
-          <div class="edu-card glass-card">
-            <span class="edu-year">2022 – 2026</span>
-            <h3 class="edu-degree">B.Tech in Computer Science and Design</h3>
-            <div class="edu-school">Vimal Jyothi Engineering College, Chemperi</div>
-            <span class="edu-grade">CGPA (Sem 1–6): 7.04</span>
-          </div>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+        
+        <div class="glass-card" style="padding: 2rem; text-align: left;">
+          <span style="color: var(--accent-glow); font-weight: 700;">2022 – 2026</span>
+          <h3 style="color: #fff; font-size: 1.3rem;">B.Tech in Computer Science and Design</h3>
+          <p style="color: var(--text-muted);">Vimal Jyothi Engineering College, Chemperi</p>
+          <span style="display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; margin-top: 5px;">CGPA: 7.04</span>
         </div>
 
-        <div class="edu-item">
-          <div class="edu-card glass-card">
-            <span class="edu-year">2020 – 2022</span>
-            <h3 class="edu-degree">Higher Secondary (Class 12)</h3>
-            <div class="edu-school">St. Thomas HSS, Manikkadavu – Kerala</div>
-            <span class="edu-grade">State Board Biology Science: 93.58%</span>
-          </div>
+        <div class="glass-card" style="padding: 2rem; text-align: left;">
+          <span style="color: var(--accent-glow); font-weight: 700;">2020 – 2022</span>
+          <h3 style="color: #fff; font-size: 1.3rem;">Higher Secondary (Class 12)</h3>
+          <p style="color: var(--text-muted);">St. Thomas HSS, Manikkadavu</p>
+          <span style="display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; margin-top: 5px;">93.58%</span>
         </div>
 
-        <div class="edu-item">
-          <div class="edu-card glass-card">
-            <span class="edu-year">2020</span>
-            <h3 class="edu-degree">Secondary (Class 10)</h3>
-            <div class="edu-school">Floweret English Medium School, Ulikkal</div>
-            <span class="edu-grade">CBSE: 71.8%</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS SECTION (BIGGER MODAL) -->
+  <!-- PROJECTS SECTION (UPDATED) -->
   <section id="projects" class="section">
     <div class="container text-center">
       <div class="section-title">Projects</div>
-      <p class="section-subtitle">Selected works and detailed breakdowns</p>
+      <p class="section-subtitle">Click on a project to view details</p>
       
-      <div class="projects-wrapper" id="projects-wrapper">
-        <!-- JS Injected -->
+      <!-- The projects are generated by JS below to handle the Modal data easily -->
+      <div class="projects-wrapper" id="projects-container">
+        <!-- Projects Injected Here -->
       </div>
     </div>
   </section>
 
-  <!-- PROJECT MODAL POPUP (LARGEST VERSION) -->
-  <div class="modal-overlay" id="project-modal">
-    <div class="modal-content glass-card">
-      <div class="modal-header">
-        <h3 class="modal-title" id="m-title">E-commerce</h3>
-        <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-meta">
-          <span class="meta-pill" id="m-type">Web Dev</span>
-          <div id="m-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center;">
-            <!-- Stack tags -->
-          </div>
-        </div>
-        <!-- Larger Description Area -->
-        <p class="modal-desc" id="m-desc">A frontend-only e-commerce website built with HTML, CSS, and JavaScript. It includes product listings, 
-          product detail pages, and basic cart functionality using JavaScript, with a focus on responsive design and UI structure.</p>
+  <!-- CERTIFICATES SECTION -->
+  <section id="certifications" class="section">
+    <div class="container text-center">
+      <div class="section-title">Certifications</div>
+      <div class="certs-grid">
         
-        <div class="modal-actions">
-          <a href="https://github.com/AlanBose-dev/e-commerce" id="m-code" class="btn-modal btn-primary-modal" target="_blank">
-            <i class="fab fa-github"></i> Source Code
-          </a>
-          <a href="https://alanbose-dev.github.io/e-commerce/" id="m-demo" class="btn-modal btn-outline-modal" target="_blank">
-            <i class="fas fa-external-link-alt"></i> Live Demo
-          </a>
+        <div class="cert-card glass-card">
+          <i class="fas fa-file-pdf cert-icon"></i>
+          <h4 class="cert-title">HTML, CSS & JavaScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Foundational Web Development</p>
+          <!-- Make sure file is 'pdf/html,css,java.pdf' inside your repo -->
+          <a href="pdf/html,css,java.pdf" target="_blank" class="cert-btn">View Certificate</a>
         </div>
+
+        <div class="cert-card glass-card">
+          <i class="fas fa-file-code cert-icon"></i>
+          <h4 class="cert-title">Introduction to Programming</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Programming Fundamentals</p>
+          <a href="pdf/Introduction to Progra....pdf" target="_blank" class="cert-btn">View Certificate</a>
+        </div>
+
+        <div class="cert-card glass-card">
+          <i class="fas fa-laptop-code cert-icon"></i>
+          <h4 class="cert-title">Foundation of Coding</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Core Coding Concepts</p>
+          <a href="pdf/foundationofcodingfull....pdf" target="_blank" class="cert-btn">View Certificate</a>
+        </div>
+
       </div>
     </div>
-  </div>
-
-  <!-- CERTIFICATES SECTION (BUTTON ADDED) -->
-  <!-- CERTIFICATIONS SECTION -->
-<section id="certifications" class="section">
-  <div class="container text-center">
-    <h2 class="section-title">Certifications</h2>
-    <p class="section-subtitle">Credentials & Achievements</p>
-
-    <div class="certs-grid" id="certs-grid">
-      
-      <!-- Certificate Card -->
-      <div class="cert-card">
-        <div class="cert-icon">
-          <i class="fas fa-file-pdf"></i>
-        </div>
-        <h4>HTML, CSS & JavaScript</h4>
-        <p>Foundational Web Development</p>
-        <a href="pdf/html,css,java.pdf" target="_blank" class="cert-btn">
-          View Certificate
-        </a>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon">
-          <i class="fas fa-file-pdf"></i>
-        </div>
-        <h4>Introduction to Programming</h4>
-        <p>Programming Fundamentals</p>
-        <a href="pdf/Introduction to Progra....pdf" target="_blank" class="cert-btn">
-          View Certificate
-        </a>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon">
-          <i class="fas fa-file-pdf"></i>
-        </div>
-        <h4>Foundation of Coding</h4>
-        <p>Core Coding Concepts</p>
-        <a href="pdf/foundationofcodingfull....pdf" target="_blank" class="cert-btn">
-          View Certificate
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="section">
     <div class="container text-center">
       <div class="section-title">Get In Touch</div>
-      <p class="section-subtitle">Let's build something amazing together</p>
-      
       <div class="glass-card contact-box">
         <form id="contactForm">
-          <div class="form-group">
-            <input type="text" id="msg-name" placeholder="Your Name" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <input type="email" id="msg-email" placeholder="Your Email" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <textarea id="msg-content" placeholder="Your Message" class="form-input" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
+          <input type="text" id="msg-name" placeholder="Your Name" class="form-input" required>
+          <input type="email" id="msg-email" placeholder="Your Email" class="form-input" required>
+          <textarea id="msg-content" placeholder="Your Message" class="form-input" style="min-height: 150px; resize: vertical;" required></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>&copy; <span id="year"></span> NOVA-FORGE. All rights reserved.</p>
-    </div>
+  <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); color: var(--text-muted);">
+    <p>&copy; <span id="year"></span> NOVA-FORGE. All rights reserved.</p>
   </footer>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-content glass-card">
+      <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3 id="m-title">Project Title</h3>
+      </div>
+      <div id="m-stack" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+        <!-- Stack tags injected here -->
+      </div>
+      <p class="modal-desc" id="m-desc">Description goes here...</p>
+      <div class="modal-actions">
+        <a href="#" id="m-demo" target="_blank" class="btn btn-primary">Live Demo</a>
+        <a href="#" id="m-code" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+      </div>
+    </div>
+  </div>
 
   <!-- JAVASCRIPT -->
   <script type="module">
-    // 1. UI INTERACTION
     document.getElementById('year').textContent = new Date().getFullYear();
-    
+
+    // --- 1. MOBILE MENU ---
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
-
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       const icon = menuBtn.querySelector('i');
-      if (navLinks.classList.contains('active')) { icon.classList.replace('fa-bars', 'fa-times'); }
-      else { icon.classList.replace('fa-times', 'fa-bars'); }
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
     });
 
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-      });
+    // --- 2. PROJECTS DATA & LOGIC ---
+    // You can edit your projects here easily
+    const projectsData = [
+      {
+        title: "E-Commerce Website",
+        stack: ["HTML", "CSS", "JavaScript"],
+        image: "https://placehold.co/600x400/0E1116/2DD4BF?text=E-Commerce", // Replace with real image path: 'images/ecommerce.jpg'
+        desc: "A frontend-only e-commerce website built with HTML, CSS, and JavaScript. It includes product listings, product detail pages, and basic cart functionality using JavaScript, with a focus on responsive design and UI structure.",
+        demo: "https://alanbose-dev.github.io/e-commerce/",
+        code: "https://github.com/AlanBose-dev/e-commerce"
+      },
+      {
+        title: "Space Explorer Game",
+        stack: ["Unity", "C#", "Physics2D"],
+        image: "https://placehold.co/600x400/0E1116/22D3EE?text=Space+Game", // Replace with real image path
+        desc: "A 2D platformer game developed in Unity featuring custom physics engine, particle systems, and a level editor. Optimized for mobile devices with touch controls.",
+        demo: "#",
+        code: "#"
+      }
+    ];
+
+    const projectContainer = document.getElementById('projects-container');
+    const modal = document.getElementById('project-modal');
+
+    // Render Projects
+    projectsData.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'project-card glass-card';
+      card.innerHTML = `
+        <div style="position: relative;">
+          <img src="${p.image}" class="project-thumb" alt="${p.title}">
+          <div class="click-hint"><span class="hint-text">VIEW DETAILS</span></div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">${p.title}</h3>
+          <div class="project-stack">
+            ${p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}
+          </div>
+        </div>
+      `;
+      // Click event to open modal
+      card.addEventListener('click', () => openModal(p));
+      projectContainer.appendChild(card);
     });
 
-    // 2. FIREBASE CONNECTION
+    window.openModal = (p) => {
+      document.getElementById('m-title').textContent = p.title;
+      document.getElementById('m-desc').textContent = p.desc;
+      document.getElementById('m-demo').href = p.demo;
+      document.getElementById('m-code').href = p.code;
+      
+      const stackContainer = document.getElementById('m-stack');
+      stackContainer.innerHTML = p.stack.map(s => `<span class="stack-tag" style="border: 1px solid var(--accent-glow);">${s}</span>`).join('');
+      
+      modal.classList.add('open');
+    }
+
+    window.closeModal = () => {
+      modal.classList.remove('open');
+    }
+
+    // Close on click outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // --- 3. FIREBASE CONTACT FORM ---
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC3SAkK1AOM08-OfRtLtOWUfHQuI9179ew",
@@ -1111,161 +514,11 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // 3. DEFAULT DATA
-    const DEFAULT_DATA = {
-      hero: {
-        name: "ALAN BOSE",
-        services: ["Full-Stack Developer", "Game Developer"]
-      },
-      about: {
-        headline: "Building Simple and Meaningful Web Experiences",
-        bio: "I am a Computer Science student with a strong interest in frontend web development. I enjoy turning ideas and designs into responsive and user-friendly websites using HTML, CSS, and JavaScript.\n\nCurrently, I am improving my skills through hands-on projects and professional courses to prepare for real-world development work."
-      },
-      skills: [
-        { name: "HTML5", icon: "fab fa-html5" },
-        { name: "CSS3", icon: "fab fa-css3-alt" },
-        { name: "JavaScript", icon: "fab fa-js" },
-        { name: "React", icon: "fab fa-react" },
-        { name: "Unity", icon: "fab fa-unity" },
-        { name: "Blender", icon: "fas fa-cube" },
-        { name: "Git", icon: "fab fa-git-alt" }
-      ],
-      projects: [
-        {
-          title: "E-Commerce Dashboard",
-          type: "Web Development",
-          stack: ["React", "Firebase", "Redux"],
-          desc: "A full-featured dashboard for managing products, orders, and analytics. Includes real-time data sync, user authentication, dark mode, and a responsive design optimized for mobile usage. This project helped me understand complex state management and database integration.",
-          link_code: "#",
-          link_demo: "#",
-          image: "https://placehold.co/600x400/0E1116/2DD4BF?text=E-Commerce+Dashboard" 
-        },
-        {
-          title: "Space Explorer",
-          type: "Game Development",
-          stack: ["Unity", "C#", "Physics2D"],
-          desc: "A 2D platformer game developed in Unity featuring custom physics engine, particle systems, and a level editor. Optimized for mobile devices with touch controls. I implemented a custom save system and achievement tracking.",
-          link_code: "#",
-          link_demo: "#",
-          image: "https://placehold.co/600x400/0E1116/22D3EE?text=Space+Explorer"
-        }
-      ],
-      certificates: [
-        { title: "Full Stack Foundation", issuer: "Microsoft", date: "Dec 2025", link: "pdf/fullstack-cert.pdf", icon: "fas fa-award" }
-      ]
-    };
-
-    // 4. RENDER FUNCTIONS
-    function renderSkills(skills) {
-      const grid = document.getElementById('skills-grid');
-      grid.innerHTML = '';
-      skills.forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'skill-box glass-card';
-        div.innerHTML = `<i class="${s.icon} skill-icon"></i><div class="skill-name">${s.name}</div>`;
-        grid.appendChild(div);
-      });
-    }
-
-    function renderProjects(projects) {
-      const wrapper = document.getElementById('projects-wrapper');
-      wrapper.innerHTML = '';
-      
-      projects.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'project-card glass-card';
-        
-        card.innerHTML = `
-          <img src="${p.image || 'https://placehold.co/600x400/0E1116/2DD4BF?text=Project'}" class="project-thumb" alt="${p.title}">
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">${p.type || 'Project'}</span>
-            </div>
-            <h3 class="project-title">${p.title}</h3>
-            <span class="view-hint">Click for Details</span>
-          </div>
-        `;
-
-        card.addEventListener('click', () => openModal(p));
-        wrapper.appendChild(card);
-      });
-    }
-
-    function renderCerts(certs) {
-      const grid = document.getElementById('certs-grid');
-      grid.innerHTML = '';
-      certs.forEach(c => {
-        const div = document.createElement('div');
-        div.className = 'cert-card glass-card';
-        // Added a View Certificate Button here
-        div.innerHTML = `
-          <i class="${c.icon} cert-icon"></i>
-          <h3 class="cert-title">${c.title}</h3>
-          <div class="cert-issuer">${c.issuer}</div>
-          <span class="cert-date">${c.date}</span>
-          <a href="${c.link}" target="_blank" class="btn-cert">
-            <i class="fas fa-eye"></i> View Certificate
-          </a>
-        `;
-        grid.appendChild(div);
-      });
-    }
-
-    // 5. MODAL LOGIC
-    const modal = document.getElementById('project-modal');
-
-    window.openModal = (project) => {
-      document.getElementById('m-title').textContent = project.title;
-      document.getElementById('m-type').textContent = project.type || 'Project';
-      document.getElementById('m-desc').textContent = project.desc;
-      
-      document.getElementById('m-code').href = project.link_code || '#';
-      document.getElementById('m-demo').href = project.link_demo || '#';
-
-      const stackDiv = document.getElementById('m-stack');
-      stackDiv.innerHTML = '';
-      if(project.stack && Array.isArray(project.stack)) {
-        project.stack.forEach(tech => {
-          const span = document.createElement('span');
-          span.className = 'meta-pill';
-          span.textContent = tech;
-          stackDiv.appendChild(span);
-        });
-      }
-
-      modal.classList.add('open');
-    };
-
-    window.closeModal = () => {
-      modal.classList.remove('open');
-    };
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // 6. DATA SYNC
-    onSnapshot(doc(db, "website", "content"), (docSnap) => {
-      const data = docSnap.exists() ? { ...DEFAULT_DATA, ...docSnap.data() } : DEFAULT_DATA;
-
-      // Update Text Fields
-      if (data.hero?.name) document.getElementById('hero-name').textContent = data.hero.name;
-      if (data.hero?.services) document.getElementById('hero-services').textContent = Array.isArray(data.hero.services) ? data.hero.services.join(' | ') : data.hero.services;
-      if (data.about?.headline) document.getElementById('about-headline').textContent = data.about.headline;
-      if (data.about?.bio) document.getElementById('about-bio').innerHTML = `<p>${data.about.bio.replace(/\n/g, '<br>')}</p>`;
-
-      // Render Lists
-      if (data.skills) renderSkills(data.skills);
-      if (data.projects) renderProjects(data.projects);
-      if (data.certificates) renderCerts(data.certificates);
-    });
-
-    // 7. CONTACT FORM
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = e.target.querySelector('button');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = 'Sending...';
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
       btn.disabled = true;
 
       try {
@@ -1275,17 +528,16 @@
           message: document.getElementById('msg-content').value,
           date: new Date().toISOString()
         });
-        alert("Message Sent! I'll get back to you soon.");
+        alert("Message Sent Successfully!");
         e.target.reset();
       } catch (error) {
-        console.error("Error:", error);
-        alert("Failed to send message.");
+        console.error("Error sending message:", error);
+        alert("Failed to send message. Please try again.");
       } finally {
-        btn.innerHTML = originalText;
+        btn.textContent = originalText;
         btn.disabled = false;
       }
     });
-
   </script>
 </body>
 </html>

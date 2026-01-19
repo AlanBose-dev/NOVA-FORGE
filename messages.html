@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA | Messages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root { --bg: #0e1116; --card: #151a21; --accent: #2dd4bf; --text: #f9fafb; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); padding: 2rem; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    
+    .container { width: 100%; max-width: 800px; }
+    h1 { color: var(--accent); margin-bottom: 2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+    
+    /* LOGIN FORM */
+    #auth-screen { text-align: center; margin-top: 10vh; }
+    input { padding: 10px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; margin-bottom: 10px; width: 100%; max-width: 300px; }
+    button { padding: 10px 20px; background: var(--accent); border: none; border-radius: 5px; font-weight: bold; cursor: pointer; color: #000; }
+    button:hover { background: #fff; }
+
+    /* MESSAGES LIST */
+    #message-screen { display: none; width: 100%; }
+    .msg-card { background: var(--card); padding: 1.5rem; border-radius: 10px; border: 1px solid #333; margin-bottom: 1rem; }
+    .msg-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px; }
+    .msg-name { color: var(--accent); font-weight: 700; }
+    .msg-email { color: #888; font-size: 0.9rem; }
+    .msg-date { font-size: 0.8rem; color: #666; }
+    .msg-body { line-height: 1.6; }
+    .logout-btn { position: absolute; top: 20px; right: 20px; background: #ff4444; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Inbox</h1>
+
+    <!-- 1. AUTH SCREEN -->
+    <div id="auth-screen">
+      <p style="margin-bottom: 1rem;">Login to view messages</p>
+      <input type="email" id="email" placeholder="Email"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button onclick="login()">LOGIN</button>
+      <p id="error" style="color: #ff4444; margin-top: 10px; font-size: 0.9rem;"></p>
+    </div>
+
+    <!-- 2. MESSAGES SCREEN -->
+    <div id="message-screen">
+      <button class="logout-btn" onclick="logout()">Logout</button>
+      <div id="msg-list">Loading...</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3SAkK1AOM08-OfRtLtOWUfHQuI9179ew",
+      authDomain: "nova-forge-14e0d.firebaseapp.com",
+      projectId: "nova-forge-14e0d",
+      storageBucket: "nova-forge-14e0d.firebasestorage.app",
+      messagingSenderId: "869423934249",
+      appId: "1:869423934249:web:027f97a90bef4dface6538"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const authScreen = document.getElementById('auth-screen');
+    const msgScreen = document.getElementById('message-screen');
+    const msgList = document.getElementById('msg-list');
+    const errorMsg = document.getElementById('error');
+
+    // Check Login State
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        authScreen.style.display = 'none';
+        msgScreen.style.display = 'block';
+        loadMessages();
+      } else {
+        authScreen.style.display = 'block';
+        msgScreen.style.display = 'none';
+      }
+    });
+
+    // Login Function
+    window.login = async () => {
+      const e = document.getElementById('email').value;
+      const p = document.getElementById('password').value;
+      try {
+        await signInWithEmailAndPassword(auth, e, p);
+      } catch (err) {
+        errorMsg.textContent = "Login Failed: " + err.message;
+      }
+    };
+
+    window.logout = () => signOut(auth);
+
+    // Load Messages
+    function loadMessages() {
+      const q = query(collection(db, "messages"), orderBy("date", "desc"));
+      onSnapshot(q, (snapshot) => {
+        msgList.innerHTML = '';
+        if (snapshot.empty) {
+          msgList.innerHTML = '<p>No messages found.</p>';
+          return;
+        }
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const date = new Date(data.date).toLocaleString();
+          msgList.innerHTML += `
+            <div class="msg-card">
+              <div class="msg-header">
+                <div>
+                  <div class="msg-name">${data.name}</div>
+                  <div class="msg-email">${data.email}</div>
+                </div>
+                <div class="msg-date">${date}</div>
+              </div>
+              <div class="msg-body">${data.message}</div>
+            </div>
+          `;
+        });
+      });
+    }
+  </script>
+</body>
+</html>
