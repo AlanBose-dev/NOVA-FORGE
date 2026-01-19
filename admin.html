@@ -355,50 +355,7 @@
                 <div id="projects-list" class="item-list"></div>
             </div>
 
-            <!-- CERTIFICATES TAB -->
-            <div id="certs" class="tab-content">
-                <div class="section-header"><h2 class="section-title">Manage Certifications</h2></div>
-                
-                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                    <h4 style="color:#fff; margin-bottom:1rem;">Add Certificate</h4>
-                    <div class="form-group">
-                        <label>Certificate Title</label>
-                        <input type="text" id="cert-title">
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label>Issuer</label>
-                            <input type="text" id="cert-issuer">
-                        </div>
-                        <div class="form-group">
-                            <label>Date</label>
-                            <input type="text" id="cert-date" placeholder="e.g. Dec 2025">
-                        </div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label>Credential Link</label>
-                            <input type="text" id="cert-link">
-                        </div>
-                        <div class="form-group">
-                            <label>Icon</label>
-                            <select id="cert-icon">
-                                <option value="fas fa-award">Award (Generic)</option>
-                                <option value="fab fa-microsoft">Microsoft</option>
-                                <option value="fab fa-google">Google</option>
-                                <option value="fab fa-aws">AWS</option>
-                                <option value="fas fa-university">University</option>
-                                <option value="fas fa-certificate">Certificate</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" id="btn-add-cert" onclick="addCert()">
-                        <span class="btn-text">ADD CERTIFICATE</span><span class="spinner"></span>
-                    </button>
-                </div>
-
-                <div id="certs-list" class="item-list"></div>
-            </div>
+            
 
             <!-- MESSAGES TAB -->
             <div id="messages" class="tab-content">
