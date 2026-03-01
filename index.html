@@ -1,488 +1,1260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVA-FORGE | Alan Bose</title>
+    <meta
+      name="description"
+      content="Portfolio of a Full Stack Developer & Designer"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOVA-FORGE | Alan Bose</title>
-  <meta name="description" content="Portfolio of a Full Stack Developer & Designer" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      /* --- CSS VARIABLES & RESET --- */
+      :root {
+        --bg-color: #0e1116;
+        --bg-secondary: #151a21;
+        --text-main: #f9fafb;
+        --text-muted: #94a3b8;
+        --primary-gradient: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 100%);
+        --accent-glow: #2dd4bf;
+        --secondary-glow: #22d3ee;
+        --glass-bg: rgba(30, 41, 59, 0.3);
+        --glass-border: rgba(45, 212, 191, 0.2);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+        --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      }
 
-  <style>
-    /* --- CSS VARIABLES & RESET --- */
-    :root {
-      --bg-color: #0e1116;
-      --bg-secondary: #151a21;
-      --text-main: #f9fafb;
-      --text-muted: #94a3b8;
-      --primary-gradient: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 100%);
-      --accent-glow: #2dd4bf;
-      --secondary-glow: #22d3ee;
-      --glass-bg: rgba(30, 41, 59, 0.3);
-      --glass-border: rgba(45, 212, 191, 0.2);
-      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
-      --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Outfit", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
+      /* --- UTILITIES --- */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .text-center {
+        text-align: center;
+      }
 
-    /* --- UTILITIES --- */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-    .text-center { text-align: center; }
-    
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 800;
-      text-transform: uppercase;
-      display: inline-block;
-    }
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        text-transform: uppercase;
+        display: inline-block;
+      }
 
-    .section-subtitle { color: var(--text-muted); margin-bottom: 4rem; font-size: 1.1rem; }
+      .section-subtitle {
+        color: var(--text-muted);
+        margin-bottom: 4rem;
+        font-size: 1.1rem;
+      }
 
-    /* --- GLASS CARD --- */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-      border-radius: 16px;
-      transition: var(--transition);
-    }
-    .glass-card:hover { border-color: var(--accent-glow); transform: translateY(-5px); }
+      /* --- GLASS CARD --- */
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--glass-shadow);
+        border-radius: 16px;
+        transition: var(--transition);
+      }
+      .glass-card:hover {
+        border-color: var(--accent-glow);
+        transform: translateY(-5px);
+      }
 
-    /* --- BUTTONS --- */
-    .btn {
-      display: inline-block; padding: 0.9rem 2.2rem; border-radius: 50px;
-      font-weight: 700; transition: var(--transition); cursor: pointer; border: none;
-      text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px;
-    }
-    .btn-primary { background: var(--text-main); color: var(--bg-color); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3); background: var(--accent-glow); }
-    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: var(--text-main); }
-    .btn-outline:hover { border-color: var(--accent-glow); background: rgba(45, 212, 191, 0.1); }
+      /* --- BUTTONS --- */
+      .btn {
+        display: inline-block;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+      }
+      .btn-primary {
+        background: var(--text-main);
+        color: var(--bg-color);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3);
+        background: var(--accent-glow);
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--text-main);
+      }
+      .btn-outline:hover {
+        border-color: var(--accent-glow);
+        background: rgba(45, 212, 191, 0.1);
+      }
 
-    /* --- NAVBAR --- */
-    .navbar {
-      position: fixed; top: 0; width: 100%; padding: 1.2rem 0; z-index: 1000;
-      background: rgba(14, 17, 22, 0.85); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-transform: uppercase; }
-    .logo span { color: var(--accent-glow); }
-    .nav-links { display: flex; gap: 2.5rem; }
-    .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; transition: 0.3s; }
-    .nav-link:hover { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
-    .menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
-
-    /* --- HERO --- */
-    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
-    .hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; }
-    .hero-greeting { 
-      display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--accent-glow);
-      border-radius: 50px; color: var(--accent-glow); font-weight: 600; margin-bottom: 1rem;
-    }
-    .hero-title { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; font-weight: 800; }
-    .hero-title span { background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .highlight-txt { color: #ffd700; font-weight: 700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-    
-    .hero-socials { display: flex; gap: 1rem; margin-bottom: 2rem; margin-top: 1.5rem; }
-    .hero-social-link {
-      width: 45px; height: 45px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: 0.3s;
-    }
-    .hero-social-link:hover { background: var(--accent-glow); color: #000; transform: translateY(-5px); }
-
-    .profile-photo {
-      max-width: 380px; width: 100%; clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); border: 2px solid rgba(45, 212, 191, 0.3);
-    }
-
-    /* --- SECTION COMMON --- */
-    .section { padding: 6rem 0; }
-
-    /* --- ABOUT --- */
-    .about-card { padding: 3rem; max-width: 900px; margin: 0 auto; text-align: center; }
-    .stats-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-    .stat-card { padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid var(--glass-border); }
-    .stat-num { font-size: 2rem; font-weight: 800; color: #fff; }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
-
-    /* --- SKILLS --- */
-    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-    .skill-box { width: 150px; padding: 2rem 1rem; text-align: center; }
-    .skill-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--text-main); }
-    .skill-box:hover .skill-icon { color: var(--accent-glow); }
-
-    /* --- PROJECTS (UPDATED LAYOUT) --- */
-    .projects-wrapper {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; justify-content: center;
-    }
-    .project-card {
-      background: var(--bg-secondary); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden;
-      cursor: pointer; transition: var(--transition); position: relative;
-    }
-    .project-card:hover { transform: translateY(-10px); border-color: var(--accent-glow); }
-    
-    .project-thumb { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
-    .project-info { padding: 1.5rem; text-align: center; }
-    .project-title { font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem; font-weight: 700; }
-    .project-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.5rem; }
-    .stack-tag { font-size: 0.75rem; padding: 4px 10px; background: rgba(45, 212, 191, 0.1); color: var(--accent-glow); border-radius: 50px; }
-    
-    /* Click overlay hint */
-    .click-hint {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center;
-      opacity: 0; transition: 0.3s;
-    }
-    .project-card:hover .click-hint { opacity: 1; }
-    .hint-text { color: #fff; font-weight: 700; letter-spacing: 1px; border: 1px solid var(--accent-glow); padding: 10px 20px; border-radius: 30px; background: #000; }
-
-    /* --- MODAL --- */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9); z-index: 2000; display: none;
-      justify-content: center; align-items: center; padding: 1rem; opacity: 0; transition: opacity 0.3s;
-    }
-    .modal-overlay.open { display: flex; opacity: 1; }
-    .modal-content {
-      background: var(--bg-secondary); width: 100%; max-width: 800px;
-      border-radius: 20px; border: 1px solid var(--accent-glow);
-      position: relative; padding: 2.5rem; transform: scale(0.9); transition: 0.3s;
-    }
-    .modal-overlay.open .modal-content { transform: scale(1); }
-    .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-    .modal-header h3 { font-size: 2rem; color: var(--accent-glow); margin-bottom: 1rem; }
-    .modal-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; }
-    .modal-actions { display: flex; gap: 1rem; }
-
-    /* --- CERTIFICATES --- */
-    .certs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-    .cert-card { width: 300px; padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
-    .cert-icon { font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 1rem; }
-    .cert-title { color: #fff; margin-bottom: 0.5rem; }
-    .cert-btn { margin-top: 1rem; padding: 8px 20px; border: 1px solid var(--accent-glow); color: var(--accent-glow); border-radius: 20px; font-size: 0.9rem; transition: 0.3s; }
-    .cert-btn:hover { background: var(--accent-glow); color: #000; }
-
-    /* --- CONTACT --- */
-    .contact-box { max-width: 600px; margin: 0 auto; padding: 3rem; }
-    .form-input {
-      width: 100%; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
-      border-radius: 10px; color: #fff; margin-bottom: 1.5rem; outline: none; transition: 0.3s;
-    }
-    .form-input:focus { border-color: var(--accent-glow); }
-
-    /* --- MOBILE --- */
-    @media (max-width: 768px) {
-      .hero-container { grid-template-columns: 1fr; text-align: center; }
-      .hero-content { order: 2; }
-      .hero-visual { order: 1; margin-bottom: 2rem; display: flex; justify-content: center; }
+      /* --- NAVBAR --- */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.2rem 0;
+        z-index: 1000;
+        background: rgba(14, 17, 22, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-main);
+        text-transform: uppercase;
+      }
+      .logo span {
+        color: var(--accent-glow);
+      }
       .nav-links {
-        position: fixed; top: 0; right: -100%; height: 100vh; width: 70%;
-        background: #0e1116; flex-direction: column; justify-content: center;
-        align-items: center; transition: 0.3s; z-index: 999; border-left: 1px solid var(--glass-border);
+        display: flex;
+        gap: 2.5rem;
       }
-      .nav-links.active { right: 0; }
-      .menu-btn { display: block; z-index: 1001; }
-      .stats-wrapper { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">NOVA<span>-FORGE</span></a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#certifications" class="nav-link">Certificates</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="container hero-container">
-      <div class="hero-content">
-        <div class="hero-greeting">Hello, Welcome to My Forge</div>
-        <h1 class="hero-title">I am <span>ALAN BOSE</span></h1>
-        <div style="font-size: 1.2rem; color: var(--text-muted);">
-          And I am a <span class="highlight-txt">Full-Stack Developer</span>
-        </div>
-        
-        <div class="hero-socials">
-          <a href="https://github.com/AlanBose-dev" target="_blank" class="hero-social-link"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/alan-bose" target="_blank" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://wa.me/917907173621" target="_blank" class="hero-social-link"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:alanbose701@gmail.com" target="_blank" class="hero-social-link"><i class="fas fa-envelope"></i></a>
-        </div>
-        
-        <div style="display: flex; gap: 1rem;">
-          <a href="#projects" class="btn btn-primary">View Work</a>
-          <!-- Ensure your resume is named correctly in 'pdf' folder -->
-          <a href="pdf/resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
-        </div>
-      </div>
-      
-      <div class="hero-visual">
-        <!-- Ensure your image is named correctly in 'images' folder -->
-        <img src="images/Alan2.jpg" alt="Profile" class="profile-photo" onerror="this.src='https://placehold.co/400x400/151A21/2DD4BF?text=Alan+Bose'" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about" class="section">
-    <div class="container text-center">
-      <div class="section-title">About Me</div>
-      <div class="glass-card about-card">
-        <h3>Building Simple and Meaningful Web Experiences</h3>
-        <br>
-        <p style="color: var(--text-muted); line-height: 1.8;">
-          Final-year Computer Science and Design student with hands-on experience in full stack web development. 
-          Skilled in HTML, CSS, JavaScript, and Firebase, with practical experience building real-world applications 
-          such as complaint reporting and online voting systems. Seeking an entry-level role where I can apply my 
-          skills and continue growing as a developer.
-        </p>
-        
-        <div class="stats-wrapper">
-          <div class="stat-card">
-            <div class="stat-num">3+</div>
-            <div class="stat-label">Certifications</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">3+</div>
-            <div class="stat-label">Projects</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">5+</div>
-            <div class="stat-label">Technologies</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS SECTION -->
-  <section id="skills" class="section">
-    <div class="container text-center">
-      <div class="section-title">Skills</div>
-      <div class="skills-grid">
-        <div class="skill-box glass-card"><i class="fab fa-html5 skill-icon"></i><div>HTML5</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-css3-alt skill-icon"></i><div>CSS3</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-js skill-icon"></i><div>JavaScript</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-blender skill-icon"></i><div>Blender</div></div>
-        <div class="skill-box glass-card"><i class="fas fa-database skill-icon"></i><div>Firebase</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-unity skill-icon"></i><div>Unity</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-git-alt skill-icon"></i><div>Git</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-github skill-icon"></i><div>GitHub</div></div>
-        <div class="skill-box glass-card"><i class="fab fa-code skill-icon"></i><div>VS Code</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION SECTION -->
-  <section id="education" class="section">
-    <div class="container text-center">
-      <div class="section-title">Education</div>
-      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
-        
-        <div class="glass-card" style="padding: 2rem; text-align: left;">
-          <span style="color: var(--accent-glow); font-weight: 700;">2022 – 2026</span>
-          <h3 style="color: #fff; font-size: 1.3rem;">B.Tech in Computer Science and Design</h3>
-          <p style="color: var(--text-muted);">Vimal Jyothi Engineering College, Chemperi</p>
-          <span style="display: inline-block; background: rgba(93, 129, 124, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; margin-top: 5px;">CGPA: 7.04</span>
-        </div>
-
-        <div class="glass-card" style="padding: 2rem; text-align: left;">
-          <span style="color: var(--accent-glow); font-weight: 700;">2020 – 2022</span>
-          <h3 style="color: #fff; font-size: 1.3rem;">Higher Secondary (Class 12)</h3>
-          <p style="color: var(--text-muted);">St. Thomas HSS, Manikkadavu</p>
-          <span style="display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; margin-top: 5px;">93.58%</span>
-        </div>
-        <div class="glass-card" style="padding: 2rem; text-align: left;">
-          <span style="color: var(--accent-glow); font-weight: 700;">2019 – 2020</span>
-          <h3 style="color: #fff; font-size: 1.3rem;">Central Board of Secondary Education (Class 10)</h3>
-          <p style="color: var(--text-muted);">Floweret English Medium School, Ulikkal</p>
-          <span style="display: inline-block; background: rgba(45, 212, 191, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--accent-glow); font-size: 0.9rem; margin-top: 5px;">71.8%</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS SECTION (UPDATED) -->
-  <section id="projects" class="section">
-    <div class="container text-center">
-      <div class="section-title">Projects</div>
-      <p class="section-subtitle">Click on a project to view details</p>
-      
-      <!-- The projects are generated by JS below to handle the Modal data easily -->
-      <div class="projects-wrapper" id="projects-container">
-        <!-- Projects Injected Here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES SECTION -->
-  <section id="certifications" class="section">
-    <div class="container text-center">
-      <div class="section-title">Certifications</div>
-      <div class="certs-grid">
-        
-        <div class="cert-card glass-card">
-          <i class="fas fa-file-pdf cert-icon"></i>
-          <h4 class="cert-title">HTML, CSS & JavaScript</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Foundational Web Development</p>
-          <!-- Make sure file is 'pdf/html,css,java.pdf' inside your repo -->
-          <a href="pdf/frontend.pdf" target="_blank" class="cert-btn">View Certificate</a>
-        </div>
-
-        <div class="cert-card glass-card">
-          <i class="fas fa-file-code cert-icon"></i>
-          <h4 class="cert-title">Introduction to Programming</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Programming Fundamentals</p>
-          <a href="pdf/csharp.pdf" target="_blank" class="cert-btn">View Certificate</a>
-        </div>
-
-        <div class="cert-card glass-card">
-          <i class="fas fa-laptop-code cert-icon"></i>
-          <h4 class="cert-title">Foundation of Coding</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Core Coding Concepts</p>
-          <a href="pdf/fcfs.pdf" target="_blank" class="cert-btn">View Certificate</a>
-        </div>
-        <div class="cert-card glass-card">
-          <i class="fas fa-laptop-code cert-icon"></i>
-          <h4 class="cert-title">Vibe Coding Challenge</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Competition-3rd place</p>
-          <a href="pdf/vibecoding.pdf" target="_blank" class="cert-btn">View Certificate</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section">
-    <div class="container text-center">
-      <div class="section-title">Get In Touch</div>
-      <div class="glass-card contact-box">
-        <form id="contactForm">
-          <input type="text" id="msg-name" placeholder="Your Name" class="form-input" required>
-          <input type="email" id="msg-email" placeholder="Your Email" class="form-input" required>
-          <textarea id="msg-content" placeholder="Your Message" class="form-input" style="min-height: 150px; resize: vertical;" required></textarea>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); color: var(--text-muted);">
-    <p>&copy; <span id="year"></span> NOVA-FORGE. All rights reserved.</p>
-  </footer>
-
-  <!-- PROJECT MODAL -->
-  <div class="modal-overlay" id="project-modal">
-    <div class="modal-content glass-card">
-      <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
-      <div class="modal-header">
-        <h3 id="m-title">Project Title</h3>
-      </div>
-      <div id="m-stack" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-        <!-- Stack tags injected here -->
-      </div>
-      <p class="modal-desc" id="m-desc">Description goes here...</p>
-      <div class="modal-actions">
-        <a href="#" id="m-demo" target="_blank" class="btn btn-primary">Live Demo</a>
-        <a href="#" id="m-code" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT -->
-  <script type="module">
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // --- 1. MOBILE MENU ---
-    const menuBtn = document.getElementById('menu-btn');
-    const navLinks = document.getElementById('nav-links');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      const icon = menuBtn.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
-    });
-
-    // --- 2. PROJECTS DATA & LOGIC ---
-    // You can edit your projects here easily
-    const projectsData = [
-      {
-        title: "E-Commerce Website",
-        stack: ["HTML", "CSS", "JavaScript"],
-        image: "images/e-commerce.png", // Replace with real image path: 'images/ecommerce.jpg'
-        desc: "A frontend-only e-commerce website built with HTML, CSS, and JavaScript. It includes product listings, product detail pages, and basic cart functionality using JavaScript, with a focus on responsive design and UI structure.",
-        demo: "https://alanbose-dev.github.io/e-commerce/",
-        code: "https://github.com/AlanBose-dev/e-commerce"
-      },
-      {
-        title: "SmartAlloc-Budget Planner",
-        stack: ["html", "css", "javascript", "localStorage"],
-        image: "images/SmartAlloc.png", // Replace with real image path
-        desc: "Developed a web-based system for managing and allocating resources using a structured digitalworkflow.",
-        demo: " https://alanbose-dev.github.io/SmartAlloc/",
-        code: "https://github.com/AlanBose-dev/SmartAlloc"
-      },
-      {
-        title: "CampusResolve-Resolve CampusIssues Faster",
-        stack: ["html", "css", "javascript", "Firebase"],
-        image: "images/Campusresolve.png", // Replace with real image path
-        desc: "Developed a web-based system for campus problems , the problem can complaint through this system and the authority can take action on it.",
-        demo: "https://alanbose-dev.github.io/campusresolve/",
-        code: "https://github.com/AlanBose-dev/campusresolve/"
+      .nav-link {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        transition: 0.3s;
       }
-    ];
+      .nav-link:hover {
+        color: #fff;
+        text-shadow: 0 0 10px var(--accent-glow);
+      }
+      .menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--text-main);
+        cursor: pointer;
+      }
 
-    const projectContainer = document.getElementById('projects-container');
-    const modal = document.getElementById('project-modal');
+      /* --- HERO --- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .hero-greeting {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--accent-glow);
+        border-radius: 50px;
+        color: var(--accent-glow);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .hero-title {
+        font-size: 4rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+      .hero-title span {
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .highlight-txt {
+        color: #ffd700;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      }
 
-    // Render Projects
-    projectsData.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'project-card glass-card';
-      card.innerHTML = `
+      .hero-socials {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+      }
+      .hero-social-link {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        transition: 0.3s;
+      }
+      .hero-social-link:hover {
+        background: var(--accent-glow);
+        color: #000;
+        transform: translateY(-5px);
+      }
+
+      .profile-photo {
+        max-width: 380px;
+        width: 100%;
+        clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(45, 212, 191, 0.3);
+      }
+
+      /* --- SECTION COMMON --- */
+      .section {
+        padding: 6rem 0;
+      }
+
+      /* --- ABOUT --- */
+      .about-card {
+        padding: 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .stats-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .stat-card {
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+      }
+      .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+      }
+
+      /* --- SKILLS --- */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+      .skill-box {
+        width: 150px;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+      .skill-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+      }
+      .skill-box:hover .skill-icon {
+        color: var(--accent-glow);
+      }
+
+      /* --- PROJECTS (UPDATED LAYOUT) --- */
+      .projects-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        justify-content: center;
+      }
+      .project-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-glow);
+      }
+
+      .project-thumb {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .project-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .project-title {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+      .project-stack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .stack-tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        background: rgba(45, 212, 191, 0.1);
+        color: var(--accent-glow);
+        border-radius: 50px;
+      }
+
+      /* Click overlay hint */
+      .click-hint {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      .project-card:hover .click-hint {
+        opacity: 1;
+      }
+      .hint-text {
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border: 1px solid var(--accent-glow);
+        padding: 10px 20px;
+        border-radius: 30px;
+        background: #000;
+      }
+
+      /* --- MODAL --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .modal-overlay.open {
+        display: flex;
+        opacity: 1;
+      }
+      .modal-content {
+        background: var(--bg-secondary);
+        width: 100%;
+        max-width: 800px;
+        border-radius: 20px;
+        border: 1px solid var(--accent-glow);
+        position: relative;
+        padding: 2.5rem;
+        transform: scale(0.9);
+        transition: 0.3s;
+      }
+      .modal-overlay.open .modal-content {
+        transform: scale(1);
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .modal-header h3 {
+        font-size: 2rem;
+        color: var(--accent-glow);
+        margin-bottom: 1rem;
+      }
+      .modal-desc {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      /* --- CERTIFICATES --- */
+      .certs-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+      .cert-card {
+        width: 300px;
+        padding: 2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .cert-icon {
+        font-size: 2.5rem;
+        color: var(--accent-glow);
+        margin-bottom: 1rem;
+      }
+      .cert-title {
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .cert-btn {
+        margin-top: 1rem;
+        padding: 8px 20px;
+        border: 1px solid var(--accent-glow);
+        color: var(--accent-glow);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+      .cert-btn:hover {
+        background: var(--accent-glow);
+        color: #000;
+      }
+
+      /* --- CONTACT --- */
+      .contact-box {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 3rem;
+      }
+      .form-input {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        outline: none;
+        transition: 0.3s;
+      }
+      .form-input:focus {
+        border-color: var(--accent-glow);
+      }
+
+      /* --- MOBILE --- */
+      @media (max-width: 768px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-content {
+          order: 2;
+        }
+        .hero-visual {
+          order: 1;
+          margin-bottom: 2rem;
+          display: flex;
+          justify-content: center;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 70%;
+          background: #0e1116;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.3s;
+          z-index: 999;
+          border-left: 1px solid var(--glass-border);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .menu-btn {
+          display: block;
+          z-index: 1001;
+        }
+        .stats-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+      .hidden-certs {
+        display: none;
+      }
+
+      .hidden-certs.show {
+        display: contents;
+      }
+
+      .view-more-btn {
+        margin-top: 30px;
+        padding: 12px 24px;
+        border-radius: 30px;
+        border: none;
+        background: #00d4ff;
+        color: #000;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .view-more-btn:hover {
+        transform: scale(1.05);
+      }
+      /* SKILL GROUP CONTAINER */
+      .skill-group {
+        padding: 40px;
+        margin-top: 45px;
+        border-radius: 20px;
+        text-align: left;
+      }
+
+      /* GROUP TITLE */
+      .skill-group-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+      }
+
+      /* GRID */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 25px;
+      }
+
+      /* SKILL CARD */
+      .skill-box {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+        padding: 28px 20px;
+        text-align: center;
+        transition: 0.3s ease;
+      }
+
+      /* ICON */
+      .skill-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        color: var(--primary-color);
+      }
+
+      /* HOVER EFFECT */
+      .skill-box:hover {
+        transform: translateY(-6px);
+        background: rgba(0, 212, 255, 0.08);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">NOVA<span>-FORGE</span></a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certificates</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-greeting">Hello, Welcome to My Forge</div>
+          <h1 class="hero-title">I am <span>ALAN BOSE</span></h1>
+          <div style="font-size: 1.2rem; color: var(--text-muted)">
+            And I am a <span class="highlight-txt">Full-Stack Developer</span>
+          </div>
+
+          <div class="hero-socials">
+            <a
+              href="https://github.com/AlanBose-dev"
+              target="_blank"
+              class="hero-social-link"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/alan-bose"
+              target="_blank"
+              class="hero-social-link"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://wa.me/917907173621"
+              target="_blank"
+              class="hero-social-link"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a
+              href="mailto:alanbose701@gmail.com"
+              target="_blank"
+              class="hero-social-link"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
+
+          <div style="display: flex; gap: 1rem">
+            <a href="#projects" class="btn btn-primary">View Work</a>
+            <!-- Ensure your resume is named correctly in 'pdf' folder -->
+            <a href="pdf/resume.pdf" target="_blank" class="btn btn-outline"
+              >Resume</a
+            >
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Ensure your image is named correctly in 'images' folder -->
+          <img
+            src="images/Alan2.jpg"
+            alt="Profile"
+            class="profile-photo"
+            onerror="
+              this.src =
+                'https://placehold.co/400x400/151A21/2DD4BF?text=Alan+Bose'
+            "
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container text-center">
+        <div class="section-title">About Me</div>
+        <div class="glass-card about-card">
+          <h3>Building Simple and Meaningful Web Experiences</h3>
+          <br />
+          <p style="color: var(--text-muted); line-height: 1.8">
+            Final-year Computer Science and Design student with hands-on
+            experience in full stack web development. Skilled in HTML, CSS,
+            JavaScript, and Firebase, with practical experience building
+            real-world applications such as complaint reporting and online
+            voting systems. Seeking an entry-level role where I can apply my
+            skills and continue growing as a developer.
+          </p>
+
+          <div class="stats-wrapper">
+            <div class="stat-card">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-title text-center">Skills</div>
+
+        <!-- FRONTEND -->
+        <div class="skill-group glass-card">
+          <h3 class="skill-group-title">
+            <i class="fas fa-code"></i> Frontend Development
+          </h3>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <i class="fab fa-html5 skill-icon"></i>
+              <span>HTML5</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fab fa-css3-alt skill-icon"></i>
+              <span>CSS3</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fab fa-js skill-icon"></i>
+              <span>JavaScript (ES6+)</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fab fa-react skill-icon"></i>
+              <span>React.js</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-mobile-alt skill-icon"></i>
+              <span>Responsive Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACKEND -->
+        <div class="skill-group glass-card">
+          <h3 class="skill-group-title">
+            <i class="fas fa-server"></i> Backend Development
+          </h3>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <i class="fab fa-python skill-icon"></i>
+              <span>Python</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-leaf skill-icon"></i>
+              <span>Django</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-plug skill-icon"></i>
+              <span>REST APIs</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-edit skill-icon"></i>
+              <span>CRUD Operations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATABASE -->
+        <div class="skill-group glass-card">
+          <h3 class="skill-group-title">
+            <i class="fas fa-database"></i> Database
+          </h3>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <i class="fas fa-database skill-icon"></i>
+              <span>SQL</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-project-diagram skill-icon"></i>
+              <span>Database Design</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-fire skill-icon"></i>
+              <span>Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOLS -->
+        <div class="skill-group glass-card">
+          <h3 class="skill-group-title">
+            <i class="fas fa-tools"></i> Tools & Workflow
+          </h3>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <i class="fab fa-git-alt skill-icon"></i>
+              <span>Git</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fab fa-github skill-icon"></i>
+              <span>GitHub</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-code skill-icon"></i>
+              <span>VS Code</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTHER SKILLS -->
+        <div class="skill-group glass-card">
+          <h3 class="skill-group-title">
+            <i class="fas fa-star"></i> Other Skills
+          </h3>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <i class="fab fa-unity skill-icon"></i>
+              <span>Unity</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-cube skill-icon"></i>
+              <span>Blender</span>
+            </div>
+
+            <div class="skill-box">
+              <i class="fas fa-lightbulb skill-icon"></i>
+              <span>Problem Solving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section">
+      <div class="container text-center">
+        <div class="section-title">Education</div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+          "
+        >
+          <div class="glass-card" style="padding: 2rem; text-align: left">
+            <span style="color: var(--accent-glow); font-weight: 700"
+              >2022 – 2026</span
+            >
+            <h3 style="color: #fff; font-size: 1.3rem">
+              B.Tech in Computer Science and Design
+            </h3>
+            <p style="color: var(--text-muted)">
+              Vimal Jyothi Engineering College, Chemperi
+            </p>
+            <span
+              style="
+                display: inline-block;
+                background: rgba(93, 129, 124, 0.1);
+                padding: 4px 12px;
+                border-radius: 4px;
+                color: var(--accent-glow);
+                font-size: 0.9rem;
+                margin-top: 5px;
+              "
+              >CGPA: 7.04</span
+            >
+          </div>
+
+          <div class="glass-card" style="padding: 2rem; text-align: left">
+            <span style="color: var(--accent-glow); font-weight: 700"
+              >2020 – 2022</span
+            >
+            <h3 style="color: #fff; font-size: 1.3rem">
+              Higher Secondary (Class 12)
+            </h3>
+            <p style="color: var(--text-muted)">St. Thomas HSS, Manikkadavu</p>
+            <span
+              style="
+                display: inline-block;
+                background: rgba(45, 212, 191, 0.1);
+                padding: 4px 12px;
+                border-radius: 4px;
+                color: var(--accent-glow);
+                font-size: 0.9rem;
+                margin-top: 5px;
+              "
+              >93.58%</span
+            >
+          </div>
+          <div class="glass-card" style="padding: 2rem; text-align: left">
+            <span style="color: var(--accent-glow); font-weight: 700"
+              >2019 – 2020</span
+            >
+            <h3 style="color: #fff; font-size: 1.3rem">
+              Central Board of Secondary Education (Class 10)
+            </h3>
+            <p style="color: var(--text-muted)">
+              Floweret English Medium School, Ulikkal
+            </p>
+            <span
+              style="
+                display: inline-block;
+                background: rgba(45, 212, 191, 0.1);
+                padding: 4px 12px;
+                border-radius: 4px;
+                color: var(--accent-glow);
+                font-size: 0.9rem;
+                margin-top: 5px;
+              "
+              >71.8%</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (UPDATED) -->
+    <section id="projects" class="section">
+      <div class="container text-center">
+        <div class="section-title">Projects</div>
+        <p class="section-subtitle">Click on a project to view details</p>
+
+        <!-- The projects are generated by JS below to handle the Modal data easily -->
+        <div class="projects-wrapper" id="projects-container">
+          <!-- Projects Injected Here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES SECTION -->
+    <section id="certifications" class="section">
+      <div class="container text-center">
+        <div class="section-title">Certifications</div>
+
+        <div class="certs-grid">
+          <!-- ===== FIRST 6 (VISIBLE) ===== -->
+
+          <!-- Meta Full Stack -->
+          <div class="cert-card glass-card">
+            <i class="fas fa-award cert-icon"></i>
+            <h4 class="cert-title">Meta Full Stack Developer</h4>
+            <p class="cert-desc">Professional Certificate</p>
+            <a href="pdf/Meta Full Stack.pdf" target="_blank" class="cert-btn">
+              View Certificate
+            </a>
+          </div>
+
+          <div class="cert-card glass-card">
+            <i class="fas fa-react cert-icon"></i>
+            <h4 class="cert-title">Advanced React</h4>
+            <a href="pdf/Advanced React.pdf" target="_blank" class="cert-btn">
+              View Certificate
+            </a>
+          </div>
+
+          <div class="cert-card glass-card">
+            <i class="fas fa-code cert-icon"></i>
+            <h4 class="cert-title">APIs</h4>
+            <a href="pdf/APIs.pdf" target="_blank" class="cert-btn">
+              View Certificate
+            </a>
+          </div>
+
+          <div class="cert-card glass-card">
+            <i class="fas fa-server cert-icon"></i>
+            <h4 class="cert-title">Django Web Framework</h4>
+            <a
+              href="pdf/Django Web Framework.pdf"
+              target="_blank"
+              class="cert-btn"
+            >
+              View Certificate
+            </a>
+          </div>
+
+          <div class="cert-card glass-card">
+            <i class="fas fa-html5 cert-icon"></i>
+            <h4 class="cert-title">HTML & CSS in Depth</h4>
+            <a
+              href="pdf/HTML and CSS in depth.pdf"
+              target="_blank"
+              class="cert-btn"
+            >
+              View Certificate
+            </a>
+          </div>
+
+          <div class="cert-card glass-card">
+            <i class="fas fa-database cert-icon"></i>
+            <h4 class="cert-title">Databases for Back-End</h4>
+            <a
+              href="pdf/Introduction to Databases for Back-End.pdf"
+              target="_blank"
+              class="cert-btn"
+            >
+              View Certificate
+            </a>
+          </div>
+
+          <!-- ===== HIDDEN CERTIFICATES ===== -->
+          <div id="moreCerts" class="hidden-certs">
+            <!-- Meta modules remaining -->
+            <div class="cert-card glass-card">
+              <h4>Programming in Python</h4>
+              <a
+                href="pdf/Programming in Python.pdf"
+                target="_blank"
+                class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+
+            <div class="cert-card glass-card">
+              <h4>Programming with JavaScript</h4>
+              <a
+                href="pdf/Programming with JavaScript.pdf"
+                target="_blank"
+                class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+
+            <div class="cert-card glass-card">
+              <h4>React Basics</h4>
+              <a href="pdf/React Basics.pdf" target="_blank" class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+
+            <div class="cert-card glass-card">
+              <h4>Version Control</h4>
+              <a href="pdf/Version Control.pdf" target="_blank" class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+
+            <!-- Other certificates -->
+            <div class="cert-card glass-card">
+              <h4>AI Bootcamp</h4>
+              <a href="pdf/AI BOOTCAMP.pdf" target="_blank" class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+
+            <div class="cert-card glass-card">
+              <h4>Vibe Coding Challenge</h4>
+              <a href="pdf/vibe coding.pdf" target="_blank" class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+            <div class="cert-card glass-card">
+              <h4>Foundation of coding full stack</h4>
+              <a
+                href="pdf/foundation of coding full stack.pdf"
+                target="_blank"
+                class="cert-btn"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW MORE BUTTON -->
+        <button id="viewMoreBtn" class="view-more-btn">
+          View More Certificates
+        </button>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container text-center">
+        <div class="section-title">Get In Touch</div>
+        <div class="glass-card contact-box">
+          <form id="contactForm">
+            <input
+              type="text"
+              id="msg-name"
+              placeholder="Your Name"
+              class="form-input"
+              required
+            />
+            <input
+              type="email"
+              id="msg-email"
+              placeholder="Your Email"
+              class="form-input"
+              required
+            />
+            <textarea
+              id="msg-content"
+              placeholder="Your Message"
+              class="form-input"
+              style="min-height: 150px; resize: vertical"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      style="
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid var(--glass-border);
+        color: var(--text-muted);
+      "
+    >
+      <p>&copy; <span id="year"></span> NOVA-FORGE. All rights reserved.</p>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div class="modal-overlay" id="project-modal">
+      <div class="modal-content glass-card">
+        <button class="close-btn" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+          <h3 id="m-title">Project Title</h3>
+        </div>
+        <div
+          id="m-stack"
+          style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap"
+        >
+          <!-- Stack tags injected here -->
+        </div>
+        <p class="modal-desc" id="m-desc">Description goes here...</p>
+        <div class="modal-actions">
+          <a href="#" id="m-demo" target="_blank" class="btn btn-primary"
+            >Live Demo</a
+          >
+          <a href="#" id="m-code" target="_blank" class="btn btn-outline"
+            ><i class="fab fa-github"></i> Code</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script type="module">
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // --- 1. MOBILE MENU ---
+      const menuBtn = document.getElementById("menu-btn");
+      const navLinks = document.getElementById("nav-links");
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        const icon = menuBtn.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-times");
+      });
+      const btn = document.getElementById("viewMoreBtn");
+      const more = document.getElementById("moreCerts");
+
+      btn.addEventListener("click", () => {
+        more.classList.toggle("show");
+
+        if (more.classList.contains("show")) {
+          btn.textContent = "Show Less";
+        } else {
+          btn.textContent = "View More Certificates";
+        }
+      });
+      // --- 2. PROJECTS DATA & LOGIC ---
+      // You can edit your projects here easily
+      const projectsData = [
+        {
+          title: "E-Commerce Website",
+          stack: ["HTML", "CSS", "JavaScript"],
+          image: "images/e-commerce.png", // Replace with real image path: 'images/ecommerce.jpg'
+          desc: "A frontend-only e-commerce website built with HTML, CSS, and JavaScript. It includes product listings, product detail pages, and basic cart functionality using JavaScript, with a focus on responsive design and UI structure.",
+          demo: "https://alanbose-dev.github.io/e-commerce/",
+          code: "https://github.com/AlanBose-dev/e-commerce",
+        },
+        {
+          title: "SmartAlloc-Budget Planner",
+          stack: ["html", "css", "javascript", "localStorage"],
+          image: "images/SmartAlloc.png", // Replace with real image path
+          desc: "Developed a web-based system for managing and allocating resources using a structured digitalworkflow.",
+          demo: " https://alanbose-dev.github.io/SmartAlloc/",
+          code: "https://github.com/AlanBose-dev/SmartAlloc",
+        },
+        {
+          title: "CampusResolve-Resolve CampusIssues Faster",
+          stack: ["html", "css", "javascript", "Firebase"],
+          image: "images/Campusresolve.png", // Replace with real image path
+          desc: "Developed a web-based system for campus problems , the problem can complaint through this system and the authority can take action on it.",
+          demo: "https://alanbose-dev.github.io/campusresolve/",
+          code: "https://github.com/AlanBose-dev/campusresolve/",
+        },
+      ];
+
+      const projectContainer = document.getElementById("projects-container");
+      const modal = document.getElementById("project-modal");
+
+      // Render Projects
+      projectsData.forEach((p) => {
+        const card = document.createElement("div");
+        card.className = "project-card glass-card";
+        card.innerHTML = `
         <div style="position: relative;">
           <img src="${p.image}" class="project-thumb" alt="${p.title}">
           <div class="click-hint"><span class="hint-text">VIEW DETAILS</span></div>
@@ -490,76 +1262,87 @@
         <div class="project-info">
           <h3 class="project-title">${p.title}</h3>
           <div class="project-stack">
-            ${p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}
+            ${p.stack.map((s) => `<span class="stack-tag">${s}</span>`).join("")}
           </div>
         </div>
       `;
-      // Click event to open modal
-      card.addEventListener('click', () => openModal(p));
-      projectContainer.appendChild(card);
-    });
+        // Click event to open modal
+        card.addEventListener("click", () => openModal(p));
+        projectContainer.appendChild(card);
+      });
 
-    window.openModal = (p) => {
-      document.getElementById('m-title').textContent = p.title;
-      document.getElementById('m-desc').textContent = p.desc;
-      document.getElementById('m-demo').href = p.demo;
-      document.getElementById('m-code').href = p.code;
-      
-      const stackContainer = document.getElementById('m-stack');
-      stackContainer.innerHTML = p.stack.map(s => `<span class="stack-tag" style="border: 1px solid var(--accent-glow);">${s}</span>`).join('');
-      
-      modal.classList.add('open');
-    }
+      window.openModal = (p) => {
+        document.getElementById("m-title").textContent = p.title;
+        document.getElementById("m-desc").textContent = p.desc;
+        document.getElementById("m-demo").href = p.demo;
+        document.getElementById("m-code").href = p.code;
 
-    window.closeModal = () => {
-      modal.classList.remove('open');
-    }
+        const stackContainer = document.getElementById("m-stack");
+        stackContainer.innerHTML = p.stack
+          .map(
+            (s) =>
+              `<span class="stack-tag" style="border: 1px solid var(--accent-glow);">${s}</span>`,
+          )
+          .join("");
 
-    // Close on click outside
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
+        modal.classList.add("open");
+      };
 
-    // --- 3. FIREBASE CONTACT FORM ---
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+      window.closeModal = () => {
+        modal.classList.remove("open");
+      };
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyC3SAkK1AOM08-OfRtLtOWUfHQuI9179ew",
-      authDomain: "nova-forge-14e0d.firebaseapp.com",
-      projectId: "nova-forge-14e0d",
-      storageBucket: "nova-forge-14e0d.firebasestorage.app",
-      messagingSenderId: "869423934249",
-      appId: "1:869423934249:web:027f97a90bef4dface6538"
-    };
+      // Close on click outside
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+      // --- 3. FIREBASE CONTACT FORM ---
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      const originalText = btn.textContent;
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
+      const firebaseConfig = {
+        apiKey: "AIzaSyC3SAkK1AOM08-OfRtLtOWUfHQuI9179ew",
+        authDomain: "nova-forge-14e0d.firebaseapp.com",
+        projectId: "nova-forge-14e0d",
+        storageBucket: "nova-forge-14e0d.firebasestorage.app",
+        messagingSenderId: "869423934249",
+        appId: "1:869423934249:web:027f97a90bef4dface6538",
+      };
 
-      try {
-        await addDoc(collection(db, "messages"), {
-          name: document.getElementById('msg-name').value,
-          email: document.getElementById('msg-email').value,
-          message: document.getElementById('msg-content').value,
-          date: new Date().toISOString()
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = e.target.querySelector("button");
+          const originalText = btn.textContent;
+          btn.textContent = "Sending...";
+          btn.disabled = true;
+
+          try {
+            await addDoc(collection(db, "messages"), {
+              name: document.getElementById("msg-name").value,
+              email: document.getElementById("msg-email").value,
+              message: document.getElementById("msg-content").value,
+              date: new Date().toISOString(),
+            });
+            alert("Message Sent Successfully!");
+            e.target.reset();
+          } catch (error) {
+            console.error("Error sending message:", error);
+            alert("Failed to send message. Please try again.");
+          } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }
         });
-        alert("Message Sent Successfully!");
-        e.target.reset();
-      } catch (error) {
-        console.error("Error sending message:", error);
-        alert("Failed to send message. Please try again.");
-      } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
